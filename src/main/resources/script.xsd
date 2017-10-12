@@ -1,0 +1,2643 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+Copyright (c) 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015 NCPDP. All rights reserved. This work is owned by National Council for Prescription Drug Programs, Inc., 924Ø E. Raintree Drive, Scottsdale, AZ 8526Ø, (48Ø) 477-1ØØØ, ncpdp@ncpdp.org, and protected by the copyright laws of the United States. 17 U.S.C. §1Ø1, et. seq. Permission is given to Council members to copy and use the work or any part thereof in connection with the business purposes of the Council members.   
+
+The work may not be changed or altered. The work may not be sold, used or exploited for commercial purposes. This permission may be revoked by National Council for Prescription Drug Programs, Inc., at any time. The National Council for Prescription Drugs Programs, Inc. is not responsible for any errors or damage as a result of the use of the work.
+NCPDP recognizes the confidentiality of certain information exchanged electronically through the use of its standards. Users should be familiar with the federal, state, and local laws, regulations and codes requiring confidentiality of this information and should utilize the standards accordingly.
+
+NOTICE: In addition, this NCPDP Standard contains certain data fields and elements that may be completed by users with the proprietary information of third parties. The use and distribution of third parties' proprietary information without such third parties' consent, or the execution of a license or other agreement with such third party, could subject the user to numerous legal claims. All users are encouraged to contact such third parties to determine whether such information is proprietary and if necessary, to consult with legal counsel to make arrangements for the use and distribution of such proprietary information.
+--><xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.ncpdp.org/schema/script" version="WG110066201508" xmlns:datatypes="http://www.ncpdp.org/schema/datatypes" xmlns:ecl="http://www.ncpdp.org/schema/ecl" xmlns:script="http://www.ncpdp.org/schema/script" xmlns:structures="http://www.ncpdp.org/schema/structures" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import namespace="http://www.ncpdp.org/schema/ecl" schemaLocation="ecl.xsd"/>
+  <xsd:import namespace="http://www.ncpdp.org/schema/datatypes" schemaLocation="datatypes.xsd"/>
+  <xsd:import namespace="http://www.ncpdp.org/schema/structures" schemaLocation="structures.xsd"/>
+
+  <!-- ================================================== -->
+  <!-- =====  Complex Type Definitions  -->
+  <!-- ================================================== -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  ApprovedAbstractType  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="ApprovedAbstractType">
+    <xsd:sequence>
+      <xsd:element maxOccurs="10" minOccurs="0" name="ReasonCode" type="ecl:ReasonCode">
+        <xsd:annotation>
+          <xsd:documentation>Approved may contain a ReasonCode.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="ReferenceNumber" type="datatypes:an1..35">
+        <xsd:annotation>
+          <xsd:documentation>Transaction Key. Used in conjunction with same field described above in the RequestReferenceNumber. The Mailbox may return the positional key of the specific piece of mail within their files.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="Note" type="datatypes:an1..70"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  ApprovedWithoutReasonType  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="ApprovedWithoutReasonType">
+    <xsd:complexContent>
+      <xsd:restriction base="script:ApprovedAbstractType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="0" minOccurs="0" name="ReasonCode" type="ecl:ReasonCode">
+            <xsd:annotation>
+              <xsd:documentation>Approved may contain a ReasonCode.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ReferenceNumber" type="datatypes:an1..35">
+            <xsd:annotation>
+              <xsd:documentation>Transaction Key. Used in conjunction with same field described above in the RequestReferenceNumber. The Mailbox may return the positional key of the specific piece of mail within their files.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="Note" type="datatypes:an1..70"/>
+        </xsd:sequence>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  CancelRx  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="CancelRx">
+    <xsd:annotation>
+      <xsd:documentation>This transaction is used to notify the pharmacy that a previously sent prescription should be canceled and not filled.  </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:restriction base="script:SCRIPTRequest">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="MessageRequestCode" type="ecl:LTCLevelOfChangeCode">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ReturnReceipt" type="datatypes:an1..3">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="RequestReferenceNumber" type="datatypes:an1..35">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="FollowUpRequest" type="datatypes:n1..1">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ChangeOfPrescriptionStatusFlag" type="ecl:ChangeOfPrescriptionStatusCode">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="BenefitsCoordination" type="structures:BaseBenefitsCoordination">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="DiagnosisGeneral" type="structures:DiagnosisGeneral">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="Facility" type="structures:Facility">
+            <xsd:annotation>
+              <xsd:documentation>The Facility composite may be included to describe the care facility or other location at which the patient resides.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="FillStatus" type="structures:FillStatus">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Patient" type="structures:PatientTypeWithSubstanceUse"/>
+          <xsd:element minOccurs="0" name="Pharmacy" type="structures:MandatoryPharmacy">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Prescriber" type="structures:PrescriberChoice"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="DrugAdministrationRequest" type="script:DrugAdministrationRequest">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="Observation" type="structures:Observation">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="MedicationDispensed" type="structures:PrescribedMedication">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="MedicationPrescribed" type="structures:PrescribedMedicationForCancelRx"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="MedicationRequested" type="structures:PrescribedMedication">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="Supervisor" type="structures:SupervisorType"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="RequestedDates" type="datatypes:DateRange">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="ProhibitRefillRequest" type="xsd:boolean"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="ChangeReasonText" type="datatypes:an1..260"/>
+        </xsd:sequence>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  CancelRxResponse  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="CancelRxResponse">
+    <xsd:annotation>
+      <xsd:documentation>This transaction is used to notify the pharmacy that a previously sent prescription should be canceled and not filled.  </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:restriction base="script:SCRIPTResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="MessageRequestCode" type="ecl:LTCLevelOfChangeCode">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTResponse for Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ReturnReceipt" type="datatypes:an1..3">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTResponse for Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="RequestReferenceNumber" type="datatypes:an1..35">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTResponse for Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ChangeOfPrescriptionStatusFlag" type="ecl:ChangeOfPrescriptionStatusCode">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTResponse for Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Response" type="script:CancellRxResponseType">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTResponse for Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="BenefitsCoordination" type="structures:BaseBenefitsCoordination">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTResponse for Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="Facility" type="structures:Facility">
+            <xsd:annotation>
+              <xsd:documentation>The Facility composite may be included to describe the care facility or other location at which the patient resides.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="Patient" type="structures:PatientFullType">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTResponse for Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="Pharmacy" type="structures:Pharmacy">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTResponse for Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="Prescriber" type="structures:PrescriberGeneralChoice">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTResponse for Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="Observation" type="structures:Observation">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTResponse for Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="Supervisor" type="structures:SupervisorType">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTResponse for Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="MedicationDispensed" type="structures:Medication">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTResponse for Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="MedicationDispensedAdministered" type="structures:Medication">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTResponse for Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="MedicationPrescribed" type="structures:Medication">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTResponse for Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="MedicationResponse" type="structures:RefillResponseReplacedMedication"/>
+        </xsd:sequence>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  CancellRxResponseType  <<choice>>  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="CancellRxResponseType">
+    <xsd:complexContent>
+      <xsd:restriction base="script:ResponseAbstractType">
+        <xsd:choice>
+          <xsd:element name="Approved" type="script:ApprovedWithoutReasonType"/>
+          <xsd:element name="Denied" type="script:DeniedTransferredType"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="DeniedNewPrescriptionToFollow" type="datatypes:NoteType">
+            <xsd:annotation>
+              <xsd:documentation>Note the DeniedNewPrescriptionToFollow response will be sunsetted in a future version. DeniedNewPrescriptionToFollow response is not to be sent in a RxRenewalResponse for this version of SCRIPT (and above). However, DeniedNewPrescriptionToFollow response could be received in a RxRenewalResponse that was translated from a previous version of SCRIPT for backward compatibility. DeniedNewPrescriptionToFollow response only exists for entities that need to map this version to a previous version of SCRIPT that does not support a Replace. See the SCRIPT Implementation Guide for more information.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="ApprovedWithChanges" type="script:ApprovedAbstractType"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="Replace" type="datatypes:NoteType"/>
+        </xsd:choice>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  DeniedAbstractType  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="DeniedAbstractType">
+    <xsd:sequence>
+      <xsd:element maxOccurs="10" name="ReasonCode" type="ecl:ReasonCode"/>
+      <xsd:element minOccurs="0" name="ReferenceNumber" type="datatypes:an1..35">
+        <xsd:annotation>
+          <xsd:documentation>Transaction Key. Used in conjunction with same field described above in the RequestReferenceNumber. The Mailbox may return the positional key of the specific piece of mail within their files.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="DenialReason" type="datatypes:an">
+        <xsd:annotation>
+          <xsd:documentation>A DenialReason response must be accompanied by the ReasonCode or DenialReason explanation, or both.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="Pharmacy" type="structures:MandatoryPharmacy"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  DeniedNewRxToFollowAbstractType  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="DeniedNewRxToFollowAbstractType">
+    <xsd:sequence>
+      <xsd:element maxOccurs="10" name="DenialReasonCode" type="ecl:ReasonCode">
+        <xsd:annotation>
+          <xsd:documentation>A DenialReason or DeniedTransferredType response must be accompanied by the ReasonCode or DenialReason explanation, or both.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="ReferenceNumber" type="datatypes:an1..35">
+        <xsd:annotation>
+          <xsd:documentation>Transaction Key. Used in conjunction with same field described above in the RequestReferenceNumber. The Mailbox may return the positional key of the specific piece of mail within their files.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="DenialReason" type="datatypes:an">
+        <xsd:annotation>
+          <xsd:documentation>A DenialReason response must be accompanied by the ReasonCode or DenialReason explanation, or both.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  DeniedNewRxToFollowType  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="DeniedNewRxToFollowType">
+    <xsd:sequence>
+      <xsd:element maxOccurs="10" name="DenialReasonCode" type="ecl:ReasonCode">
+        <xsd:annotation>
+          <xsd:documentation>A DenialReason or DeniedTransferredType response must be accompanied by the ReasonCode or DenialReason explanation, or both.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="ReferenceNumber" type="datatypes:an1..35">
+        <xsd:annotation>
+          <xsd:documentation>Transaction Key. Used in conjunction with same field described above in the RequestReferenceNumber. The Mailbox may return the positional key of the specific piece of mail within their files.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="DenialReason" type="datatypes:an">
+        <xsd:annotation>
+          <xsd:documentation>A DenialReason response must be accompanied by the ReasonCode or DenialReason explanation, or both.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  DeniedTransferredResponseType  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="DeniedTransferredResponseType">
+    <xsd:complexContent>
+      <xsd:restriction base="script:DeniedAbstractType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="10" name="ReasonCode" type="ecl:ReasonCode17"/>
+          <xsd:element minOccurs="0" name="ReferenceNumber" type="datatypes:an1..35">
+            <xsd:annotation>
+              <xsd:documentation>Transaction Key. Used in conjunction with same field described above in the RequestReferenceNumber. The Mailbox may return the positional key of the specific piece of mail within their files.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="DenialReason" type="datatypes:an">
+            <xsd:annotation>
+              <xsd:documentation>A DenialReason or DeniedTransferredType response must be accompanied by the ReasonCode or DenialReason explanation, or both.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="Pharmacy" type="structures:MandatoryPharmacy"/>
+        </xsd:sequence>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  DeniedTransferredType  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="DeniedTransferredType">
+    <xsd:complexContent>
+      <xsd:restriction base="script:DeniedAbstractType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="10" name="ReasonCode" type="ecl:ReasonCode3"/>
+          <xsd:element minOccurs="0" name="ReferenceNumber" type="datatypes:an1..35">
+            <xsd:annotation>
+              <xsd:documentation>Transaction Key. Used in conjunction with same field described above in the RequestReferenceNumber. The Mailbox may return the positional key of the specific piece of mail within their files.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="DenialReason" type="datatypes:an">
+            <xsd:annotation>
+              <xsd:documentation>A DenialReason or DeniedTransferredType response must be accompanied by the ReasonCode or DenialReason explanation, or both.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="Pharmacy" type="structures:MandatoryPharmacy"/>
+        </xsd:sequence>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  DeniedTransferredTypeForTxRx  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="DeniedTransferredTypeForTxRx">
+    <xsd:complexContent>
+      <xsd:restriction base="script:DeniedAbstractType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="10" name="ReasonCode" type="ecl:ReasonCode3"/>
+          <xsd:element minOccurs="0" name="ReferenceNumber" type="datatypes:an1..35">
+            <xsd:annotation>
+              <xsd:documentation>Transaction Key. Used in conjunction with same field described above in the RequestReferenceNumber. The Mailbox may return the positional key of the specific piece of mail within their files.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="DenialReason" type="datatypes:an">
+            <xsd:annotation>
+              <xsd:documentation>A DenialReason or DeniedTransferredType response must be accompanied by the ReasonCode or DenialReason explanation, or both.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="Pharmacy" type="structures:MandatoryPharmacy"/>
+        </xsd:sequence>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  DrugAdministration  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="DrugAdministration">
+    <xsd:annotation>
+      <xsd:documentation>This transaction is used by prescribers/care facilities to communicate drug administration events to the patient’s pharmacy or other entity</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:restriction base="script:SCRIPTRequest">
+        <xsd:sequence>
+          <xsd:element maxOccurs="0" minOccurs="0" name="MessageRequestCode" type="ecl:MessageFunctionCode">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ReturnReceipt" type="datatypes:an1..3">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="RequestReferenceNumber" type="datatypes:an1..35">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="FollowUpRequest" type="datatypes:n1..1">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="ChangeOfPrescriptionStatusFlag" type="ecl:ChangeOfPrescriptionStatusCode">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="BenefitsCoordination" type="structures:BaseBenefitsCoordination">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="DiagnosisGeneral" type="structures:DiagnosisGeneral">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="Facility" type="structures:Facility">
+            <xsd:annotation>
+              <xsd:documentation>The Facility composite may be included to describe the care facility or other location at which the patient resides.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="FillStatus" type="structures:FillStatus">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Patient" type="structures:PatientType"/>
+          <xsd:element minOccurs="0" name="Pharmacy" type="structures:MandatoryPharmacy">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Prescriber" type="structures:PrescriberChoice"/>
+          <xsd:element name="DrugAdministrationRequest" type="script:DrugAdministrationRequest">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="Observation" type="structures:Observation">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="MedicationDispensed" type="structures:PrescribedMedication">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="MedicationPrescribed" type="structures:DrugAdministrationMedication">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="MedicationRequested" type="structures:PrescribedMedication">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="Supervisor" type="structures:SupervisorType"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="RequestedDates" type="datatypes:DateRange">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="ProhibitRefillRequest" type="xsd:boolean"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="ChangeReasonText" type="datatypes:an1..260"/>
+        </xsd:sequence>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  DrugAdministrationRequest  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="DrugAdministrationRequest">
+    <xsd:sequence>
+      <xsd:choice>
+        <xsd:element name="IndefiniteSuspension" type="script:IndefiniteSuspension">
+          <xsd:annotation>
+            <xsd:documentation>value IS</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="FixedLengthSuspension" type="script:FixedLengthSuspension">
+          <xsd:annotation>
+            <xsd:documentation>value FS</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="ResumeAdministration" type="script:ResumeAdministration">
+          <xsd:annotation>
+            <xsd:documentation>value RA</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="CancelSuspension" type="xsd:anySimpleType">
+          <xsd:annotation>
+            <xsd:documentation>value CS</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:choice>
+      <xsd:element minOccurs="0" name="DrugAdminReasonCode" type="ecl:DrugAdminReasonCode"/>
+      <xsd:element minOccurs="0" name="DrugAdminReasonText" type="datatypes:an1..100"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  FixedLengthSuspension  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="FixedLengthSuspension">
+    <xsd:sequence>
+      <xsd:element name="SuspendDateTime" type="datatypes:UtcDateType">
+        <xsd:annotation>
+          <xsd:documentation>Value SD.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="ResumeDateTime" type="datatypes:UtcDateType">
+        <xsd:annotation>
+          <xsd:documentation>Value RD.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="TimeZone" type="datatypes:TimeZone"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  IndefiniteSuspension  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="IndefiniteSuspension">
+    <xsd:sequence>
+      <xsd:element name="SuspendDateTime" type="datatypes:UtcDateType">
+        <xsd:annotation>
+          <xsd:documentation>Value SD.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="TimeZone" type="datatypes:TimeZone"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  NewRx  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="NewRx">
+    <xsd:annotation>
+      <xsd:documentation>This transaction is a request for a new prescription and is sent from the prescriber to the pharmacy.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:restriction base="script:SCRIPTRequest">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="MessageRequestCode" type="ecl:LTCLevelOfChangeCode">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ReturnReceipt" type="datatypes:an1..3">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="RequestReferenceNumber" type="datatypes:an1..35">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="FollowUpRequest" type="datatypes:n1..1">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="ChangeOfPrescriptionStatusFlag" type="ecl:ChangeOfPrescriptionStatusCode">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="AllergyOrAdverseEvent" type="structures:AllergyRestrictedChoice">
+            <xsd:annotation>
+              <xsd:documentation>The AllergyOrAdverseEvent element enables the sender to inform the recipient of all known patient allergies. The element is intended to provide this patient Allergy or AdverseEvent profile information to the recipient. If the AllergyOrAdverseEvent element is sent, it must include all known patient allergies. Responder can send back an AllergyOrAdverseEvent element, but should not echo back the AllergyOrAdverseEvent element received on the request. Note: The AllergyOrAdverseEvent element is not to be used to replace or add to the transfer of drug use evaluation information, which is instead communicated using the existing DUE composite in the medication information. This is a comprehensive list of allergies that the sender is aware of at the time the transaction is sent. Trading partners must support the AllergyOrAdverseEvent Element but use is optional on a case by case basis.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="3" minOccurs="0" name="BenefitsCoordination" type="structures:BenefitsCoordinationRestricted">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="DiagnosisGeneral" type="structures:DiagnosisGeneral">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="Facility" type="structures:Facility">
+            <xsd:annotation>
+              <xsd:documentation>The Facility composite may be included to describe the care facility or other location at which the patient resides.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="FillStatus" type="structures:FillStatus">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Patient" type="structures:PatientMandatoryAddressTypeForNewRx"/>
+          <xsd:element minOccurs="0" name="Pharmacy" type="structures:MandatoryPharmacy">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Prescriber" type="structures:MandatoryPrescriberChoice"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="DispensingRequestCode" type="ecl:DispensingRequestCode">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="DrugAdministrationRequest" type="script:DrugAdministrationRequest">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="Observation" type="structures:Observation">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="MedicationDispensed" type="structures:PrescribedMedication">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="MedicationPrescribed" type="structures:NewRxPrescribedMedication">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="MedicationRequested" type="structures:PrescribedMedication">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="Supervisor" type="structures:SupervisorMandatoryAddressType"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="RequestedDates" type="datatypes:DateRange">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ProhibitRefillRequest" type="xsd:boolean"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="ChangeReasonText" type="datatypes:an1..260"/>
+        </xsd:sequence>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  NewRxRequest  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="NewRxRequest">
+    <xsd:annotation>
+      <xsd:documentation>The NewRxRequest provides the mechanism for a pharmacy to request a new prescription.  If the new prescription request is approved, the NCPDP NewRx transaction will be sent as a follow-up transaction. The NewRx must not be contained in the NewRxResponseDenied.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element maxOccurs="0" minOccurs="0" name="MessageRequestCode" type="ecl:MessageFunctionCode">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="ReturnReceipt" type="datatypes:an1..3">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="RequestReferenceNumber" type="datatypes:an1..35">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="0" minOccurs="0" name="FollowUpRequest" type="datatypes:n1..1">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="0" minOccurs="0" name="ChangeOfPrescriptionStatusFlag" type="ecl:ChangeOfPrescriptionStatusCode">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="0" minOccurs="0" name="BenefitsCoordination" type="structures:BaseBenefitsCoordination">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="0" minOccurs="0" name="DiagnosisGeneral" type="structures:DiagnosisGeneral">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="Facility" type="structures:Facility">
+        <xsd:annotation>
+          <xsd:documentation>The Facility composite may be included to describe the care facility or other location at which the patient resides.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="0" minOccurs="0" name="FillStatus" type="structures:FillStatus">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Patient" type="structures:PatientTypeWithSubstanceUse"/>
+      <xsd:element name="Pharmacy" type="structures:MandatoryAddressPharmacy">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Prescriber" type="structures:MandatoryPrescriberChoice"/>
+      <xsd:element maxOccurs="0" minOccurs="0" name="DrugAdministrationRequest" type="script:DrugAdministrationRequest">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="0" minOccurs="0" name="Observation" type="structures:Observation">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="0" minOccurs="0" name="MedicationDispensed" type="structures:Medication">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTRequest of Definition and Usage.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="0" minOccurs="0" name="MedicationPrescribed" type="structures:Medication">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="MedicationRequested" type="structures:NewRxRequestMedication">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTRequest of Definition and Usage.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="0" minOccurs="0" name="Supervisor" type="structures:SupervisorOptionalType"/>
+      <xsd:element maxOccurs="0" minOccurs="0" name="RequestedDates" type="datatypes:DateRange">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="0" minOccurs="0" name="ProhibitRefillRequest" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTRequest of Definition and Usage.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="0" minOccurs="0" name="ChangeReasonText" type="datatypes:an1..260">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTRequest of Definition and Usage.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="Note" type="datatypes:an1..210">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  NewRxResponseDenied  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="NewRxResponseDenied">
+    <xsd:annotation>
+      <xsd:documentation>The NewRxResponseDenied provides a mechanism for the prescriber to deny the new prescription request.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="ReturnReceipt" type="datatypes:an1..3">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTResponse for Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="RequestReferenceNumber" type="datatypes:an1..35">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTResponse for Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Response" type="script:NewRxResponseDeniedType">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTResponse for Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="Facility" type="structures:Facility">
+        <xsd:annotation>
+          <xsd:documentation>The Facility composite may be included to describe the care facility or other location at which the patient resides.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Patient" type="structures:PatientTypeWithSubstanceUse">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTResponse for Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Pharmacy" type="structures:MandatoryAddressPharmacy">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTResponse for Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Prescriber" type="structures:MandatoryPrescriberChoice">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTResponse for Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="MedicationRequested" type="structures:NewRxRequestMedication">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTResponse for Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="Note" type="datatypes:an1..210">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTResponse for Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  NewRxResponseDeniedType  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="NewRxResponseDeniedType">
+    <xsd:complexContent>
+      <xsd:restriction base="script:DeniedAbstractType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="10" name="ReasonCode" type="ecl:ReasonCode9"/>
+          <xsd:element minOccurs="0" name="ReferenceNumber" type="datatypes:an1..35">
+            <xsd:annotation>
+              <xsd:documentation>Transaction Key. Used in conjunction with same field described above in the RequestReferenceNumber. The Mailbox may return the positional key of the specific piece of mail within their files.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="DenialReason" type="datatypes:an">
+            <xsd:annotation>
+              <xsd:documentation>A DenialReason response must be accompanied by the ReasonCode or DenialReason explanation, or both.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="Pharmacy" type="structures:MandatoryPharmacy"/>
+        </xsd:sequence>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  PAAppealRequest  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="PAAppealRequest">
+    <xsd:complexContent>
+      <xsd:extension base="script:PARequestAbstract">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Attachment" type="structures:AttachmentWithControlNumber"/>
+          <xsd:element name="Request" type="structures:PAAppealRequestType"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  PAAppealResponse  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="PAAppealResponse">
+    <xsd:complexContent>
+      <xsd:extension base="script:PAResponseAbstract">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Attachment" type="structures:AttachmentWithControlNumber"/>
+          <xsd:element name="Response" type="structures:PAResponseStructureForAppeal"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  PACancelRequest  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="PACancelRequest">
+    <xsd:complexContent>
+      <xsd:extension base="script:PARequestAbstract">
+        <xsd:sequence>
+          <xsd:element name="Request" type="structures:PACancelRequestStructure"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  PACancelResponse  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="PACancelResponse">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="RequestReferenceNumber" type="datatypes:an1..35"/>
+      <xsd:element name="PAReferenceID" type="datatypes:an1..35"/>
+      <xsd:element minOccurs="0" name="PAPriorityIndicator" type="ecl:PAPriorityIndicatorCode">
+        <xsd:annotation>
+          <xsd:documentation>Indicates the requested PA processing priority.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Response" type="structures:PACancelResponseStructure"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  PACommon  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType abstract="true" name="PACommon">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="RequestReferenceNumber" type="datatypes:an1..35"/>
+      <xsd:element name="PAReferenceID" type="datatypes:an1..35"/>
+      <xsd:element minOccurs="0" name="PAPriorityIndicator" type="ecl:PAPriorityIndicatorCode">
+        <xsd:annotation>
+          <xsd:documentation>Indicates the requested PA processing priority.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="3" minOccurs="0" name="BenefitsCoordination" type="structures:BenefitsCoordinationRestricted">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Patient" type="structures:PatientMandatoryAddressType"/>
+      <xsd:element minOccurs="0" name="Pharmacy" type="structures:MandatoryPharmacy">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Prescriber" type="structures:MandatoryPrescriberChoice"/>
+      <xsd:element name="MedicationPrescribed" type="structures:PAandREMsPrescribedMedication">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="Facility" type="structures:Facility">
+        <xsd:annotation>
+          <xsd:documentation>The Facility composite may be included to describe the care facility or other location at which the patient resides.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="Supervisor" type="structures:SupervisorOptionalType"/>
+      <xsd:element minOccurs="0" name="Provider" type="structures:Provider"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  PAInitiationRequest  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="PAInitiationRequest">
+    <xsd:complexContent>
+      <xsd:extension base="script:PARequestAbstract"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  PAInitiationResponse  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="PAInitiationResponse">
+    <xsd:sequence>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="RequestReferenceNumber" type="datatypes:an1..35"/>
+        <xsd:element minOccurs="0" name="PAReferenceID" type="datatypes:an1..35"/>
+        <xsd:element minOccurs="0" name="PAPriorityIndicator" type="ecl:PAPriorityIndicatorCode">
+          <xsd:annotation>
+            <xsd:documentation>Indicates the requested PA processing priority.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element maxOccurs="3" minOccurs="0" name="BenefitsCoordination" type="structures:BenefitsCoordinationRestricted">
+          <xsd:annotation>
+            <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="Patient" type="structures:PatientMandatoryAddressType"/>
+        <xsd:element minOccurs="0" name="Pharmacy" type="structures:MandatoryPharmacy">
+          <xsd:annotation>
+            <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="Prescriber" type="structures:MandatoryPrescriberChoice"/>
+        <xsd:element name="MedicationPrescribed" type="structures:PAandREMsPrescribedMedication">
+          <xsd:annotation>
+            <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element minOccurs="0" name="Facility" type="structures:Facility">
+          <xsd:annotation>
+            <xsd:documentation>The Facility composite may be included to describe the care facility or other location at which the patient resides.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element minOccurs="0" name="Supervisor" type="structures:SupervisorOptionalType"/>
+        <xsd:element minOccurs="0" name="Provider" type="structures:Provider"/>
+      </xsd:sequence>
+      <xsd:element name="Response" type="structures:PAResponseStructureRestricted"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  PARequest  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="PARequest">
+    <xsd:complexContent>
+      <xsd:extension base="script:PARequestAbstract">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Attachment" type="structures:AttachmentWithControlNumber"/>
+          <xsd:element name="Request" type="structures:PAModelType"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  PARequestAbstract  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType abstract="true" name="PARequestAbstract">
+    <xsd:complexContent>
+      <xsd:extension base="script:PACommon"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  PAResponse  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="PAResponse">
+    <xsd:complexContent>
+      <xsd:extension base="script:PAResponseAbstract">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Attachment" type="structures:AttachmentWithControlNumber"/>
+          <xsd:element name="Response" type="structures:PAResponseStructureCommon"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  PAResponseAbstract  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType abstract="true" name="PAResponseAbstract">
+    <xsd:complexContent>
+      <xsd:extension base="script:PACommon"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  REMSCommon  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType abstract="true" name="REMSCommon">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="RequestReferenceNumber" type="datatypes:an1..35"/>
+      <xsd:element name="REMSReferenceID" type="datatypes:an1..35">
+        <xsd:annotation>
+          <xsd:documentation>Assigned by the prescribing system on the initial transaction and is used as a tracking identifier on all request and response REMS transactions to tieback related REMS transactions.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="0" minOccurs="0" name="BenefitsCoordination" type="structures:BenefitsCoordinationRestricted">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Patient" type="structures:PatientMandatoryAddressType"/>
+      <xsd:element minOccurs="0" name="Pharmacy" type="structures:MandatoryPharmacy">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Prescriber" type="structures:MandatoryPrescriberChoice"/>
+      <xsd:element name="MedicationPrescribed" type="structures:PAandREMsPrescribedMedication">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="Facility" type="structures:Facility"/>
+      <xsd:element minOccurs="0" name="Supervisor" type="structures:SupervisorOptionalType"/>
+      <xsd:element minOccurs="0" name="Provider" type="structures:Provider"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  REMSInitiationRequest  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="REMSInitiationRequest">
+    <xsd:complexContent>
+      <xsd:extension base="script:REMSRequestAbstract"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  REMSInitiationResponse  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="REMSInitiationResponse">
+    <xsd:complexContent>
+      <xsd:extension base="script:REMSResponseAbstract">
+        <xsd:sequence>
+          <xsd:element name="Response" type="structures:REMSResponseStructureRestricted"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  REMSRequest  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="REMSRequest">
+    <xsd:complexContent>
+      <xsd:extension base="script:REMSRequestAbstract">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Attachment" type="structures:AttachmentWithControlNumber"/>
+          <xsd:element name="Request" type="structures:REMSModelType"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  REMSRequestAbstract  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType abstract="true" name="REMSRequestAbstract">
+    <xsd:complexContent>
+      <xsd:extension base="script:REMSCommon"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  REMSResponse  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="REMSResponse">
+    <xsd:complexContent>
+      <xsd:extension base="script:REMSResponseAbstract">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Attachment" type="structures:AttachmentWithControlNumber"/>
+          <xsd:element name="Response" type="structures:REMSResponseStructureCommon"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  REMSResponseAbstract  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType abstract="true" name="REMSResponseAbstract">
+    <xsd:complexContent>
+      <xsd:extension base="script:REMSCommon"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  Recertification  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="Recertification">
+    <xsd:annotation>
+      <xsd:documentation>This transaction is used to send a renewal request from a facility to a pharmacy.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:restriction base="script:SCRIPTRequest">
+        <xsd:sequence>
+          <xsd:element maxOccurs="0" minOccurs="0" name="MessageRequestCode" type="ecl:MessageFunctionCode">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ReturnReceipt" type="datatypes:an1..3">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="RequestReferenceNumber" type="datatypes:an1..35">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="FollowUpRequest" type="datatypes:n1..1">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="ChangeOfPrescriptionStatusFlag" type="ecl:ChangeOfPrescriptionStatusCode">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="AllergyOrAdverseEvent" type="structures:AllergyChoice">
+            <xsd:annotation>
+              <xsd:documentation>The AllergyOrAdverseEvent element enables the sender to inform the recipient of all known patient allergies. The element is intended to provide this patient Allergy or AdverseEvent profile information to the recipient. If the AllergyOrAdverseEvent element is sent, it must include all known patient allergies. Responder can send back an AllergyOrAdverseEvent element, but should not echo back the AllergyOrAdverseEvent element received on the request. Note: The AllergyOrAdverseEvent element is not to be used to replace or add to the transfer of drug use evaluation information, which is instead communicated using the existing DUE composite in the medication information. This is a comprehensive list of allergies that the sender is aware of at the time the transaction is sent. Trading partners must support the AllergyOrAdverseEvent Element but use is optional on a case by case basis.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="3" minOccurs="0" name="BenefitsCoordination" type="structures:BenefitsCoordination">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="DiagnosisGeneral" type="structures:DiagnosisGeneral">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="Facility" type="structures:Facility">
+            <xsd:annotation>
+              <xsd:documentation>The Facility composite may be included to describe the care facility or other location at which the patient resides.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="FillStatus" type="structures:FillStatus">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Patient" type="structures:PatientTypeWithSubstanceUse"/>
+          <xsd:element name="Pharmacy" type="structures:MandatoryAddressPharmacy">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Prescriber" type="structures:PrescriberChoice"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="DrugAdministrationRequest" type="script:DrugAdministrationRequest">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="Observation" type="structures:Observation">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="MedicationDispensed" type="structures:RecertificationMedicationForDispensed"/>
+          <xsd:element name="MedicationPrescribed" type="structures:RecertificationMedication"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="MedicationRequested" type="structures:ResupplyMedication">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="Supervisor" type="structures:SupervisorType"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="RequestedDates" type="datatypes:DateRange">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="ProhibitRefillRequest" type="xsd:boolean"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="ChangeReasonText" type="datatypes:an1..260"/>
+        </xsd:sequence>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  RefillResponseDeniedType  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="RefillResponseDeniedType">
+    <xsd:complexContent>
+      <xsd:restriction base="script:DeniedAbstractType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="10" name="ReasonCode" type="ecl:ReasonCode1"/>
+          <xsd:element minOccurs="0" name="ReferenceNumber" type="datatypes:an1..35">
+            <xsd:annotation>
+              <xsd:documentation>Transaction Key. Used in conjunction with same field described above in the RequestReferenceNumber. The Mailbox may return the positional key of the specific piece of mail within their files.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="DenialReason" type="datatypes:an">
+            <xsd:annotation>
+              <xsd:documentation>A DenialReason response must be accompanied by the ReasonCode or DenialReason explanation, or both.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="Pharmacy" type="structures:MandatoryPharmacy"/>
+        </xsd:sequence>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  RefillResponseType  <<choice>>  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="RefillResponseType">
+    <xsd:annotation>
+      <xsd:documentation>Used in RxRenewalResponse</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:restriction base="script:ResponseAbstractType">
+        <xsd:choice>
+          <xsd:element name="Approved" type="script:ApprovedWithoutReasonType"/>
+          <xsd:element name="Denied" type="script:RefillResponseDeniedType"/>
+          <xsd:element name="DeniedNewPrescriptionToFollow" type="datatypes:NoteType">
+            <xsd:annotation>
+              <xsd:documentation>Note the DeniedNewPrescriptionToFollow response will be sunsetted in a future version. DeniedNewPrescriptionToFollow response is not to be sent in a RxRenewalResponse for this version of SCRIPT (and above). However, DeniedNewPrescriptionToFollow response could be received in a RxRenewalResponse that was translated from a previous version of SCRIPT for backward compatibility. DeniedNewPrescriptionToFollow response only exists for entities that need to map this version to a previous version of SCRIPT that does not support a Replace. See the SCRIPT Implementation Guide for more information.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="ApprovedWithChanges" type="script:ApprovedWithoutReasonType"/>
+          <xsd:element name="Replace" type="datatypes:NoteType"/>
+        </xsd:choice>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  ResponseAbstractType  <<choice>>  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="ResponseAbstractType">
+    <xsd:choice>
+      <xsd:element minOccurs="0" name="Approved" type="script:ApprovedAbstractType"/>
+      <xsd:element minOccurs="0" name="Denied" type="script:DeniedAbstractType"/>
+      <xsd:element minOccurs="0" name="DeniedNewPrescriptionToFollow" type="datatypes:NoteType">
+        <xsd:annotation>
+          <xsd:documentation>Note the DeniedNewPrescriptionToFollow response will be sunsetted in a future version. DeniedNewPrescriptionToFollow response is not to be sent in a RxRenewalResponse for this version of SCRIPT (and above). However, DeniedNewPrescriptionToFollow response could be received in a RxRenewalResponse that was translated from a previous version of SCRIPT for backward compatibility. DeniedNewPrescriptionToFollow response only exists for entities that need to map this version to a previous version of SCRIPT that does not support a Replace. See the SCRIPT Implementation Guide for more information.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="ApprovedWithChanges" type="script:ApprovedAbstractType"/>
+      <xsd:element minOccurs="0" name="Replace" type="datatypes:NoteType"/>
+    </xsd:choice>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  ResumeAdministration  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="ResumeAdministration">
+    <xsd:sequence>
+      <xsd:element name="ResumeDateTime" type="datatypes:UtcDateType"/>
+      <xsd:element minOccurs="0" name="TimeZone" type="datatypes:TimeZone"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  Resupply  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="Resupply">
+    <xsd:annotation>
+      <xsd:documentation>This transaction is used to send a renewal request from a facility to a pharmacy.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:restriction base="script:SCRIPTRequest">
+        <xsd:sequence>
+          <xsd:element maxOccurs="0" minOccurs="0" name="MessageRequestCode" type="ecl:MessageFunctionCode">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ReturnReceipt" type="datatypes:an1..3">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="RequestReferenceNumber" type="datatypes:an1..35">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="FollowUpRequest" type="datatypes:n1..1">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="ChangeOfPrescriptionStatusFlag" type="ecl:ChangeOfPrescriptionStatusCode">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="AllergyOrAdverseEvent" type="structures:AllergyChoice">
+            <xsd:annotation>
+              <xsd:documentation>The AllergyOrAdverseEvent element enables the sender to inform the recipient of all known patient allergies. The element is intended to provide this patient Allergy or AdverseEvent profile information to the recipient. If the AllergyOrAdverseEvent element is sent, it must include all known patient allergies. Responder can send back an AllergyOrAdverseEvent element, but should not echo back the AllergyOrAdverseEvent element received on the request. Note: The AllergyOrAdverseEvent element is not to be used to replace or add to the transfer of drug use evaluation information, which is instead communicated using the existing DUE composite in the medication information. This is a comprehensive list of allergies that the sender is aware of at the time the transaction is sent. Trading partners must support the AllergyOrAdverseEvent Element but use is optional on a case by case basis.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="3" minOccurs="0" name="BenefitsCoordination" type="structures:BenefitsCoordination">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="DiagnosisGeneral" type="structures:DiagnosisGeneral">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="Facility" type="structures:Facility">
+            <xsd:annotation>
+              <xsd:documentation>The Facility composite may be included to describe the care facility or other location at which the patient resides.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="FillStatus" type="structures:FillStatus">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Patient" type="structures:PatientTypeWithSubstanceUse"/>
+          <xsd:element name="Pharmacy" type="structures:MandatoryAddressPharmacy">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Prescriber" type="structures:PrescriberChoice"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="DrugAdministrationRequest" type="script:DrugAdministrationRequest">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="Observation" type="structures:Observation">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="MedicationDispensed" type="structures:ResupplyMedicationForDispensed"/>
+          <xsd:element name="MedicationPrescribed" type="structures:ResupplyMedication">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="MedicationRequested" type="structures:ResupplyMedication">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="Supervisor" type="structures:SupervisorType"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="RequestedDates" type="datatypes:DateRange">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="ProhibitRefillRequest" type="xsd:boolean"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="ChangeReasonText" type="datatypes:an1..260"/>
+        </xsd:sequence>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  RxChangeRequest  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="RxChangeRequest">
+    <xsd:annotation>
+      <xsd:documentation>This transaction is sent from a pharmacy to a prescriber to request a change on a new prescription, for example, to request generic substitution. It may request a change on a fillable prescription. It may also be utilized to request a prescriber to review the drug requested, and obtain a Prior Authorization from the payer for the prescription.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:restriction base="script:SCRIPTRequest">
+        <xsd:sequence>
+          <xsd:element name="MessageRequestCode" type="ecl:RxChangeCode">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ReturnReceipt" type="datatypes:an1..3">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="RequestReferenceNumber" type="datatypes:an1..35">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="FollowUpRequest" type="datatypes:n1..1">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="ChangeOfPrescriptionStatusFlag" type="ecl:ChangeOfPrescriptionStatusCode">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="AllergyOrAdverseEvent" type="structures:AllergyRestrictedChoice">
+            <xsd:annotation>
+              <xsd:documentation>The AllergyOrAdverseEvent element enables the sender to inform the recipient of all known patient allergies. The element is intended to provide this patient Allergy or AdverseEvent profile information to the recipient. If the AllergyOrAdverseEvent element is sent, it must include all known patient allergies. Responder can send back an AllergyOrAdverseEvent element, but should not echo back the AllergyOrAdverseEvent element received on the request. Note: The AllergyOrAdverseEvent element is not to be used to replace or add to the transfer of drug use evaluation information, which is instead communicated using the existing DUE composite in the medication information. This is a comprehensive list of allergies that the sender is aware of at the time the transaction is sent. Trading partners must support the AllergyOrAdverseEvent Element but use is optional on a case by case basis.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="3" minOccurs="0" name="BenefitsCoordination" type="structures:BenefitsCoordination">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="DiagnosisGeneral" type="structures:DiagnosisGeneral">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="Facility" type="structures:Facility">
+            <xsd:annotation>
+              <xsd:documentation>The Facility composite may be included to describe the care facility or other location at which the patient resides.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="FillStatus" type="structures:FillStatus">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Patient" type="structures:PatientTypeWithSubstanceUse"/>
+          <xsd:element name="Pharmacy" type="structures:MandatoryPharmacy">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Prescriber" type="structures:PrescriberChoice"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="DispensingRequestCode" type="ecl:DispensingRequestCode">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="DrugAdministrationRequest" type="script:DrugAdministrationRequest">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="Observation" type="structures:Observation">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="MedicationDispensed" type="structures:PrescribedMedication">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="MedicationPrescribed" type="structures:PrescribedMedication">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="9" minOccurs="0" name="MedicationRequested" type="structures:RequestedMedication">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="Supervisor" type="structures:SupervisorType"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="RequestedDates" type="datatypes:DateRange">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="ProhibitRefillRequest" type="xsd:boolean"/>
+          <xsd:element minOccurs="0" name="ChangeReasonText" type="datatypes:an1..260"/>
+        </xsd:sequence>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  RxChangeResponse  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="RxChangeResponse">
+    <xsd:annotation>
+      <xsd:documentation>This transaction is sent from the prescriber to the pharmacy in response to a request for a change of a new prescription or a fillable prescription. It may also be sent from the prescriber to the pharmacy in response to a request for a prior authorization on a prescription.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:restriction base="script:SCRIPTResponse">
+        <xsd:sequence>
+          <xsd:element name="MessageRequestCode" type="ecl:RxChangeCode">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTResponse for Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ReturnReceipt" type="datatypes:an1..3">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTResponse for Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="RequestReferenceNumber" type="datatypes:an1..35">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTResponse for Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="ChangeOfPrescriptionStatusFlag" type="ecl:ChangeOfPrescriptionStatusCode">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTResponse for Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Response" type="script:RxChangeResponseType">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTResponse for Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="AllergyOrAdverseEvent" type="structures:AllergyRestrictedChoice">
+            <xsd:annotation>
+              <xsd:documentation>The AllergyOrAdverseEvent element enables the sender to inform the recipient of all known patient allergies. The element is intended to provide this patient Allergy or AdverseEvent profile information to the recipient. If the AllergyOrAdverseEvent element is sent, it must include all known patient allergies. Responder can send back an AllergyOrAdverseEvent element, but should not echo back the AllergyOrAdverseEvent element received on the request. Note: The AllergyOrAdverseEvent element is not to be used to replace or add to the transfer of drug use evaluation information, which is instead communicated using the existing DUE composite in the medication information. This is a comprehensive list of allergies that the sender is aware of at the time the transaction is sent. Trading partners must support the AllergyOrAdverseEvent Element but use is optional on a case by case basis.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="BenefitsCoordination" type="structures:BaseBenefitsCoordination">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTResponse for Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="Facility" type="structures:Facility">
+            <xsd:annotation>
+              <xsd:documentation>The Facility composite may be included to describe the care facility or other location at which the patient resides.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Patient" type="structures:PatientTypeWithSubstanceUse">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTResponse for Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Pharmacy" type="structures:MandatoryPharmacy">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTResponse for Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Prescriber" type="structures:PrescriberChoice">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTResponse for Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="Observation" type="structures:Observation">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTResponse for Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="Supervisor" type="structures:SupervisorType">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTResponse for Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="MedicationDispensedAdministered" type="structures:Medication">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTResponse for Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="MedicationPrescribed" type="structures:RxChangePrescribedMedication">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTResponse for Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="MedicationDispensed" type="structures:Medication">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTResponse for Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="MedicationResponse" type="structures:RefillResponseReplacedMedication"/>
+        </xsd:sequence>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  RxChangeResponseDeniedType  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="RxChangeResponseDeniedType">
+    <xsd:complexContent>
+      <xsd:restriction base="script:DeniedAbstractType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="10" name="ReasonCode" type="ecl:ReasonCode2"/>
+          <xsd:element minOccurs="0" name="ReferenceNumber" type="datatypes:an1..35">
+            <xsd:annotation>
+              <xsd:documentation>Transaction Key. Used in conjunction with same field described above in the RequestReferenceNumber. The Mailbox may return the positional key of the specific piece of mail within their files.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="DenialReason" type="datatypes:an">
+            <xsd:annotation>
+              <xsd:documentation>A DenialReason response must be accompanied by the ReasonCode or DenialReason explanation, or both.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="Pharmacy" type="structures:MandatoryPharmacy"/>
+        </xsd:sequence>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  RxChangeResponseType  <<choice>>  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="RxChangeResponseType">
+    <xsd:complexContent>
+      <xsd:restriction base="script:ResponseAbstractType">
+        <xsd:choice>
+          <xsd:element name="Approved" type="script:ApprovedWithoutReasonType"/>
+          <xsd:element name="Denied" type="script:RxChangeResponseDeniedType"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="DeniedNewPrescriptionToFollow" type="datatypes:NoteType">
+            <xsd:annotation>
+              <xsd:documentation>Note the DeniedNewPrescriptionToFollow response will be sunsetted in a future version. DeniedNewPrescriptionToFollow response is not to be sent in a RxRenewalResponse for this version of SCRIPT (and above). However, DeniedNewPrescriptionToFollow response could be received in a RxRenewalResponse that was translated from a previous version of SCRIPT for backward compatibility. DeniedNewPrescriptionToFollow response only exists for entities that need to map this version to a previous version of SCRIPT that does not support a Replace. See the SCRIPT Implementation Guide for more information.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="ApprovedWithChanges" type="script:ApprovedWithoutReasonType"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="Replace" type="datatypes:NoteType"/>
+        </xsd:choice>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  RxFill  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="RxFill">
+    <xsd:annotation>
+      <xsd:documentation>This transaction is sent from the pharmacy to the prescriber to notify the prescriber of the dispensing status of a prescription.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:restriction base="script:SCRIPTRequest">
+        <xsd:sequence>
+          <xsd:element maxOccurs="0" minOccurs="0" name="MessageRequestCode" type="ecl:MessageFunctionCode">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ReturnReceipt" type="datatypes:an1..3">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="RequestReferenceNumber" type="datatypes:an1..35">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="FollowUpRequest" type="datatypes:n1..1">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="ChangeOfPrescriptionStatusFlag" type="ecl:ChangeOfPrescriptionStatusCode">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="BenefitsCoordination" type="structures:BaseBenefitsCoordination">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="DiagnosisGeneral" type="structures:DiagnosisGeneral">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="Facility" type="structures:Facility">
+            <xsd:annotation>
+              <xsd:documentation>The Facility composite may be included to describe the care facility or other location at which the patient resides.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="FillStatus" type="structures:FillStatus">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Patient" type="structures:PatientType"/>
+          <xsd:element name="Pharmacy" type="structures:MandatoryAddressPharmacy">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Prescriber" type="structures:PrescriberGeneralChoice"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="DispensingRequestCode" type="ecl:DispensingRequestCode">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="DrugAdministrationRequest" type="script:DrugAdministrationRequest">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="Observation" type="structures:Observation">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="MedicationDispensed" type="structures:RxFillDispensedMedication">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="MedicationPrescribed" type="structures:PrescribedMedicationForRxFill"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="MedicationRequested" type="structures:PrescribedMedication">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="Supervisor" type="structures:SupervisorOptionalType"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="RequestedDates" type="datatypes:DateRange">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="ProhibitRefillRequest" type="xsd:boolean"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="ChangeReasonText" type="datatypes:an1..260"/>
+        </xsd:sequence>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  RxFillIndicatorChange  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="RxFillIndicatorChange">
+    <xsd:annotation>
+      <xsd:documentation>This transaction is used to notify the pharmacy of a modification to the RxfillIndicator which was previously sent on a prescription.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="ReturnReceipt" type="datatypes:an1..3">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="RequestReferenceNumber" type="datatypes:an1..35">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="RxFillIndicator" type="ecl:RxFillIndicatorType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  RxHistoryApprovedType  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="RxHistoryApprovedType">
+    <xsd:complexContent>
+      <xsd:restriction base="script:ApprovedAbstractType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="10" minOccurs="0" name="ReasonCode" type="ecl:ReasonCode5">
+            <xsd:annotation>
+              <xsd:documentation>Approved may contain a ReasonCode.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ReferenceNumber" type="datatypes:an1..35">
+            <xsd:annotation>
+              <xsd:documentation>Transaction Key. Used in conjunction with same field described above in the RequestReferenceNumber. The Mailbox may return the positional key of the specific piece of mail within their files.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="Note" type="datatypes:an1..70"/>
+        </xsd:sequence>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  RxHistoryDeniedType  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="RxHistoryDeniedType">
+    <xsd:complexContent>
+      <xsd:restriction base="script:DeniedAbstractType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="10" name="ReasonCode" type="ecl:ReasonCode6"/>
+          <xsd:element minOccurs="0" name="ReferenceNumber" type="datatypes:an1..35">
+            <xsd:annotation>
+              <xsd:documentation>Transaction Key. Used in conjunction with same field described above in the RequestReferenceNumber. The Mailbox may return the positional key of the specific piece of mail within their files.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="DenialReason" type="datatypes:an">
+            <xsd:annotation>
+              <xsd:documentation>A DenialReason response must be accompanied by the ReasonCode or DenialReason explanation, or both.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="Pharmacy" type="structures:MandatoryPharmacy"/>
+        </xsd:sequence>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  RxHistoryRequest  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="RxHistoryRequest">
+    <xsd:annotation>
+      <xsd:documentation>This transaction is sent from an entity to an entity to request the medication history of a patient.  </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:restriction base="script:SCRIPTRequest">
+        <xsd:sequence>
+          <xsd:element maxOccurs="0" minOccurs="0" name="MessageRequestCode" type="ecl:MessageFunctionCode">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="ReturnReceipt" type="datatypes:an1..3">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="RequestReferenceNumber" type="datatypes:an1..35">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="FollowUpRequest" type="datatypes:n1..1">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="ChangeOfPrescriptionStatusFlag" type="ecl:ChangeOfPrescriptionStatusCode">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="3" name="BenefitsCoordination" type="structures:RxHistoryBenefitsCoordination">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="DiagnosisGeneral" type="structures:DiagnosisGeneral">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="Facility" type="structures:Facility">
+            <xsd:annotation>
+              <xsd:documentation>The Facility composite may be included to describe the care facility or other location at which the patient resides.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="FillStatus" type="structures:FillStatus">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Patient" type="structures:PatientType"/>
+          <xsd:element minOccurs="0" name="Pharmacy" type="structures:OptionalPharmacy">
+            <xsd:annotation>
+              <xsd:documentation>Segment is required if requestor or recipient is a pharmacy</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="Prescriber" type="structures:OptionalPrescriberChoice"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="DrugAdministrationRequest" type="script:DrugAdministrationRequest">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="Observation" type="structures:Observation">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="MedicationDispensed" type="structures:PrescribedMedication">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="MedicationPrescribed" type="structures:PrescribedMedication">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="MedicationRequested" type="structures:PrescribedMedication">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="Supervisor" type="structures:SupervisorType"/>
+          <xsd:element name="RequestedDates" type="datatypes:DateRange">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="ProhibitRefillRequest" type="xsd:boolean"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="ChangeReasonText" type="datatypes:an1..260"/>
+          <xsd:element minOccurs="0" name="PDMPStatesRequested" type="structures:PDMPState"/>
+        </xsd:sequence>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  RxHistoryResponse  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="RxHistoryResponse">
+    <xsd:annotation>
+      <xsd:documentation>This response is sent from an entity to an entity to describe the patient’s medication history.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element maxOccurs="0" minOccurs="0" name="MessageRequestCode" type="ecl:MessageFunctionCode"/>
+      <xsd:element maxOccurs="0" minOccurs="0" name="ReturnReceipt" type="datatypes:an1..3"/>
+      <xsd:element maxOccurs="0" minOccurs="0" name="RequestReferenceNumber" type="datatypes:an1..35"/>
+      <xsd:element maxOccurs="0" minOccurs="0" name="ChangeOfPrescriptionStatusFlag" type="ecl:ChangeOfPrescriptionStatusCode"/>
+      <xsd:element minOccurs="0" name="Response" type="script:RxHistoryResponseType"/>
+      <xsd:element maxOccurs="3" name="BenefitsCoordination" type="structures:RxHistoryBenefitsCoordination"/>
+      <xsd:element maxOccurs="0" minOccurs="0" name="Facility" type="structures:Facility">
+        <xsd:annotation>
+          <xsd:documentation>The Facility composite may be included to describe the care facility or other location at which the patient resides.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Patient" type="structures:PatientType"/>
+      <xsd:element minOccurs="0" name="Pharmacy" type="structures:OptionalPharmacy">
+        <xsd:annotation>
+          <xsd:documentation>Value P2. Segment is required if requestor or recipient is a pharmacy.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="Prescriber" type="structures:HistoryPrescriberChoice">
+        <xsd:annotation>
+          <xsd:documentation>Value PC. Segment is required if requestor or recipient is a prescriber.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="0" minOccurs="0" name="Observation" type="structures:Observation"/>
+      <xsd:element maxOccurs="0" minOccurs="0" name="Supervisor" type="structures:SupervisorType">
+        <xsd:annotation>
+          <xsd:documentation>Value SU</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:choice minOccurs="0">
+        <xsd:element maxOccurs="300" name="MedicationDispensed" type="structures:HistoryDispensedMedication">
+          <xsd:annotation>
+            <xsd:documentation>Value D</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element maxOccurs="300" name="MedicationDispensedAdministered" type="structures:HistoryDispensedMedication">
+          <xsd:annotation>
+            <xsd:documentation>Value A.  Only used in RxHistoryResponse</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element maxOccurs="300" name="MedicationPrescribed" type="structures:HistoryPrescribedMedication">
+          <xsd:annotation>
+            <xsd:documentation>Value P.  At least one loop must contain 85 = Date Issued (Written Date). 	If  Filled or PartialFill, the medication prescribed may be sent as clarification. If NotFilled, the medication (dispensed) or (prescribed) is required, depending upon what the pharmacy has knowledge of.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:choice>
+      <xsd:element name="RequestedDates" type="datatypes:DateRange">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="Scores" type="structures:ScoreType"/>
+      <xsd:element minOccurs="0" name="PDMPStatesResponded" type="structures:PDMPStateResponded">
+        <xsd:annotation>
+          <xsd:documentation>Required on a response when request was for a State PDMP Program only.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  RxHistoryResponseType  <<choice>>  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="RxHistoryResponseType">
+    <xsd:complexContent>
+      <xsd:restriction base="script:ResponseAbstractType">
+        <xsd:choice>
+          <xsd:element name="Approved" type="script:RxHistoryApprovedType"/>
+          <xsd:element name="Denied" type="script:RxHistoryDeniedType"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="DeniedNewPrescriptionToFollow" type="datatypes:NoteType">
+            <xsd:annotation>
+              <xsd:documentation>Note the DeniedNewPrescriptionToFollow response will be sunsetted in a future version. DeniedNewPrescriptionToFollow response is not to be sent in a RxRenewalResponse for this version of SCRIPT (and above). However, DeniedNewPrescriptionToFollow response could be received in a RxRenewalResponse that was translated from a previous version of SCRIPT for backward compatibility. DeniedNewPrescriptionToFollow response only exists for entities that need to map this version to a previous version of SCRIPT that does not support a Replace. See the SCRIPT Implementation Guide for more information.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="ApprovedWithChanges" type="script:ApprovedAbstractType"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="Replace" type="datatypes:NoteType"/>
+        </xsd:choice>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  RxRenewalRequest  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="RxRenewalRequest">
+    <xsd:annotation>
+      <xsd:documentation>This transaction is from the pharmacy to the prescriber requesting additional refills.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:restriction base="script:SCRIPTRequest">
+        <xsd:sequence>
+          <xsd:element maxOccurs="0" minOccurs="0" name="MessageRequestCode" type="ecl:MessageFunctionCode">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ReturnReceipt" type="datatypes:an1..3">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="RequestReferenceNumber" type="datatypes:an1..35">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="FollowUpRequest" type="datatypes:n1..1">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="ChangeOfPrescriptionStatusFlag" type="ecl:ChangeOfPrescriptionStatusCode">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="3" minOccurs="0" name="BenefitsCoordination" type="structures:BenefitsCoordination">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="DiagnosisGeneral" type="structures:DiagnosisGeneral">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="Facility" type="structures:Facility">
+            <xsd:annotation>
+              <xsd:documentation>The Facility composite may be included to describe the care facility or other location at which the patient resides.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="FillStatus" type="structures:FillStatus">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Patient" type="structures:PatientTypeWithSubstanceUse"/>
+          <xsd:element name="Pharmacy" type="structures:MandatoryAddressPharmacy">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Prescriber" type="structures:PrescriberChoice"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="DispensingRequestCode" type="ecl:DispensingRequestCode">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="DrugAdministrationRequest" type="script:DrugAdministrationRequest">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="Observation" type="structures:Observation">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="MedicationDispensed" type="structures:RefillRequestDispensedMedication">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="MedicationPrescribed" type="structures:PrescribedMedication">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="MedicationRequested" type="structures:PrescribedMedication">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="Supervisor" type="structures:SupervisorType"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="RequestedDates" type="datatypes:DateRange">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="ProhibitRefillRequest" type="xsd:boolean"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="ChangeReasonText" type="datatypes:an1..260"/>
+        </xsd:sequence>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  RxRenewalResponse  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="RxRenewalResponse">
+    <xsd:annotation>
+      <xsd:documentation>This transaction is the response to a request for additional refills (RxRenewalRequest). The response may be accepted or denied. The response may be a new prescription (replace).</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:restriction base="script:SCRIPTResponse">
+        <xsd:sequence>
+          <xsd:element maxOccurs="0" minOccurs="0" name="MessageRequestCode" type="ecl:MessageFunctionCode">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTResponse for Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ReturnReceipt" type="datatypes:an1..3">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTResponse for Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="RequestReferenceNumber" type="datatypes:an1..35">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTResponse for Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="ChangeOfPrescriptionStatusFlag" type="ecl:ChangeOfPrescriptionStatusCode">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTResponse for Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Response" type="script:RefillResponseType">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTResponse for Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="AllergyOrAdverseEvent" type="structures:AllergyRestrictedChoice">
+            <xsd:annotation>
+              <xsd:documentation>The AllergyOrAdverseEvent element enables the sender to inform the recipient of all known patient allergies. The element is intended to provide this patient Allergy or AdverseEvent profile information to the recipient. If the AllergyOrAdverseEvent element is sent, it must include all known patient allergies. Responder can send back an AllergyOrAdverseEvent element, but should not echo back the AllergyOrAdverseEvent element received on the request. Note: The AllergyOrAdverseEvent element is not to be used to replace or add to the transfer of drug use evaluation information, which is instead communicated using the existing DUE composite in the medication information. This is a comprehensive list of allergies that the sender is aware of at the time the transaction is sent. Trading partners must support the AllergyOrAdverseEvent Element but use is optional on a case by case basis.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="BenefitsCoordination" type="structures:BaseBenefitsCoordination">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTResponse for Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="Facility" type="structures:Facility">
+            <xsd:annotation>
+              <xsd:documentation>The Facility composite may be included to describe the care facility or other location at which the patient resides.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Patient" type="structures:PatientTypeWithSubstanceUse">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTResponse for Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Pharmacy" type="structures:Pharmacy">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTResponse for Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Prescriber" type="structures:PrescriberChoice">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTResponse for Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="Observation" type="structures:Observation">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTResponse for Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="Supervisor" type="structures:SupervisorType">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTResponse for Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="MedicationDispensed" type="structures:RefillResponseDispensedMedication">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTResponse for Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="MedicationPrescribed" type="structures:PrescribedMedication">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTResponse for Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="MedicationDispensedAdministered" type="structures:Medication">
+            <xsd:annotation>
+              <xsd:documentation>See SCRIPTResponse for Definition and Usage</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="MedicationResponse" type="structures:RefillResponseReplacedMedication"/>
+        </xsd:sequence>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  RxTransferConfirm  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="RxTransferConfirm">
+    <xsd:annotation>
+      <xsd:documentation>This transaction is used by the pharmacy receiving (originally requesting) the transfer to confirm that the transferred prescription has been received and the transfer is complete.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element maxOccurs="0" minOccurs="0" name="MessageRequestCode" type="ecl:LTCLevelOfChangeCode">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="ReturnReceipt" type="datatypes:an1..3">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="RequestReferenceNumber" type="datatypes:an1..35">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="0" minOccurs="0" name="FollowUpRequest" type="datatypes:n1..1">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="0" minOccurs="0" name="ChangeOfPrescriptionStatusFlag" type="ecl:ChangeOfPrescriptionStatusCode">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="0" minOccurs="0" name="BenefitsCoordination" type="structures:BenefitsCoordinationRestricted">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="0" minOccurs="0" name="DiagnosisGeneral" type="structures:DiagnosisGeneral">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="0" minOccurs="0" name="Facility" type="structures:Facility">
+        <xsd:annotation>
+          <xsd:documentation>The Facility composite may be included to describe the care facility or other location at which the patient resides.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="0" minOccurs="0" name="FillStatus" type="structures:FillStatus">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Patient" type="structures:PatientMandatoryAddressType"/>
+      <xsd:element maxOccurs="2" minOccurs="2" name="Pharmacy" type="structures:PharmacyTransfer"/>
+      <xsd:element maxOccurs="0" minOccurs="0" name="Prescriber" type="structures:MandatoryPrescriberChoice"/>
+      <xsd:element maxOccurs="0" minOccurs="0" name="DispensingRequestCode" type="ecl:DispensingRequestCode">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="0" minOccurs="0" name="DrugAdministrationRequest" type="script:DrugAdministrationRequest">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="0" minOccurs="0" name="Observation" type="structures:Observation">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="0" minOccurs="0" name="MedicationDispensed" type="structures:PrescribedMedication">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="0" minOccurs="0" name="MedicationPrescribed" type="structures:NewRxPrescribedMedication">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="0" minOccurs="0" name="MedicationRequested" type="structures:PrescribedMedication">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="0" minOccurs="0" name="RequestedDates" type="datatypes:DateRange">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="0" minOccurs="0" name="ProhibitRefillRequest" type="xsd:boolean"/>
+      <xsd:element maxOccurs="0" minOccurs="0" name="ChangeReasonText" type="datatypes:an1..260"/>
+      <xsd:element name="Pharmacist" type="structures:Pharmacist"/>
+      <xsd:element name="RxFillConfirmIndicator" type="ecl:BooleanCode">
+        <xsd:annotation>
+          <xsd:documentation>Indicates the transfer to pharmacy supports Fill Status transactions.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="TransferRequest" type="ecl:TransferRequestCode"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  RxTransferRequest  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="RxTransferRequest">
+    <xsd:annotation>
+      <xsd:documentation>This transaction is used when one pharmacy is asking another pharmacy for a transfer of one or more prescriptions for a specific patient.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element maxOccurs="0" minOccurs="0" name="MessageRequestCode" type="ecl:LTCLevelOfChangeCode">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="ReturnReceipt" type="datatypes:an1..3">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="RequestReferenceNumber" type="datatypes:an1..35">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="0" minOccurs="0" name="FollowUpRequest" type="datatypes:n1..1">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="0" minOccurs="0" name="ChangeOfPrescriptionStatusFlag" type="ecl:ChangeOfPrescriptionStatusCode">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="0" minOccurs="0" name="BenefitsCoordination" type="structures:BenefitsCoordinationRestricted">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="0" minOccurs="0" name="DiagnosisGeneral" type="structures:DiagnosisGeneral">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="0" minOccurs="0" name="Facility" type="structures:Facility">
+        <xsd:annotation>
+          <xsd:documentation>The Facility composite may be included to describe the care facility or other location at which the patient resides.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="0" minOccurs="0" name="FillStatus" type="structures:FillStatus">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Patient" type="structures:PatientMandatoryAddressType"/>
+      <xsd:element maxOccurs="2" minOccurs="2" name="Pharmacy" type="structures:PharmacyTransfer"/>
+      <xsd:element minOccurs="0" name="Prescriber" type="structures:MandatoryPrescriberChoice"/>
+      <xsd:element maxOccurs="0" minOccurs="0" name="DispensingRequestCode" type="ecl:DispensingRequestCode">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="0" minOccurs="0" name="DrugAdministrationRequest" type="script:DrugAdministrationRequest">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="0" minOccurs="0" name="Observation" type="structures:Observation">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="0" minOccurs="0" name="Supervisor" type="structures:SupervisorOptionalType">
+        <xsd:annotation>
+          <xsd:documentation>Value SU</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="Pharmacist" type="structures:Pharmacist">
+        <xsd:annotation>
+          <xsd:documentation>The Pharmacist demographic information (name, telephone, etc.) contains the pharmacist requesting the transfer. It can be sent when required by regulation, or if desired.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="0" minOccurs="0" name="MedicationDispensed" type="structures:PrescribedMedication">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="0" minOccurs="0" name="MedicationPrescribed" type="structures:NewRxPrescribedMedication">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="MedicationTransferRequested" type="structures:TransferMedication">
+        <xsd:annotation>
+          <xsd:documentation>If TransferRequest is “SPECIFIC”, MedicationTransferRequested contains as much information is available to assist the transfer from pharmacy to determine which prescription, if possible is being requested for transfer. If multiple “SPECIFIC” prescriptions are to be transferred, but not “ALL” prescriptions, a separate RxTransferRequest must be sent for each specific prescription.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="0" minOccurs="0" name="RequestedDates" type="datatypes:DateRange">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="0" minOccurs="0" name="ProhibitRefillRequest" type="xsd:boolean"/>
+      <xsd:element maxOccurs="0" minOccurs="0" name="ChangeReasonText" type="datatypes:an1..260"/>
+      <xsd:element name="TransferRequest" type="ecl:TransferRequestCode"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  RxTransferResponse  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="RxTransferResponse">
+    <xsd:annotation>
+      <xsd:documentation>This transaction is the response from the prescription transfer request to complete the transfer.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element maxOccurs="0" minOccurs="0" name="MessageRequestCode" type="ecl:MessageFunctionCode"/>
+      <xsd:element minOccurs="0" name="ReturnReceipt" type="datatypes:an1..3"/>
+      <xsd:element minOccurs="0" name="RequestReferenceNumber" type="datatypes:an1..35"/>
+      <xsd:element maxOccurs="0" minOccurs="0" name="ChangeOfPrescriptionStatusFlag" type="ecl:ChangeOfPrescriptionStatusCode"/>
+      <xsd:element name="Response" type="script:TransferRxResponseType"/>
+      <xsd:element maxOccurs="3" minOccurs="0" name="BenefitsCoordination" type="structures:RxHistoryBenefitsCoordination"/>
+      <xsd:element maxOccurs="0" minOccurs="0" name="Facility" type="structures:Facility">
+        <xsd:annotation>
+          <xsd:documentation>The Facility composite may be included to describe the care facility or other location at which the patient resides.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Patient" type="structures:PatientMandatoryAddressType"/>
+      <xsd:element maxOccurs="2" minOccurs="2" name="Pharmacy" type="structures:PharmacyTransfer"/>
+      <xsd:element maxOccurs="0" minOccurs="0" name="Prescriber" type="structures:HistoryPrescriberChoice"/>
+      <xsd:element maxOccurs="0" minOccurs="0" name="Observation" type="structures:Observation"/>
+      <xsd:element maxOccurs="0" minOccurs="0" name="Supervisor" type="structures:SupervisorType">
+        <xsd:annotation>
+          <xsd:documentation>Value SU</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="0" minOccurs="0" name="RequestedDates" type="datatypes:DateRange">
+        <xsd:annotation>
+          <xsd:documentation>See SCRIPTRequest of Definition and Usage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="Pharmacist" type="structures:Pharmacist">
+        <xsd:annotation>
+          <xsd:documentation>If Pharmacist is used, it is to contain the transfer from pharmacist. Demographic information (name, telephone, etc.) can be sent on a denial if specific follow up is required by contacting a specific pharmacist.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="300" minOccurs="0" name="MedicationTransferred">
+        <xsd:annotation>
+          <xsd:documentation>One RxTransferResponse transaction may contain 0 to 300 prescriptions that are being transferred. Within each prescription that is being transferred, multiple dispensings/fills may be reported (0 to 300 for consistency).</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="300" minOccurs="0" name="MedicationDispensed" type="structures:TransferDispensedMedication">
+              <xsd:annotation>
+                <xsd:documentation>Value D</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="MedicationPrescribed" type="structures:TransferResponseMedication"/>
+            <xsd:element name="PrescriptionPreviouslyFilled" type="ecl:BooleanCode">
+              <xsd:annotation>
+                <xsd:documentation>If the prescription has been dispensed, the mandatory value is “Y” and MedicationDispensed is required. If the prescription has never been filled, the mandatory value is “N” and MedicationDispensed is not sent.</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="Attachment" type="structures:Attachment">
+              <xsd:annotation>
+                <xsd:documentation>Provides patient summary information when applicable</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="TransferRequest" type="ecl:TransferRequestCode"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  SCRIPTRequest  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType abstract="true" name="SCRIPTRequest">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="MessageRequestCode" type="ecl:MessageFunctionCode">
+        <xsd:annotation>
+          <xsd:documentation>For Long Term Care (LTC) Medication Change Process (Prescriber initiated CHANGE Request,) the NEWRX and the CANCEL will use this field to indicate the level of the change.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="ReturnReceipt" type="datatypes:an1..3">
+        <xsd:annotation>
+          <xsd:documentation>If this field is submitted with 1 in the request, a Verify transaction is to be sent from the recipient at some time.
+1 = Return Receipt Requested
+all other values = no return receipt requested.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="RequestReferenceNumber" type="datatypes:an1..35">
+        <xsd:annotation>
+          <xsd:documentation>Transaction key. In some trading partner agreements utilizing a mailbox functionality, this field may contain the receiver's identification number for the transaction being returned. On the response to each GetMessage request, the response may contain the mailbox's key to the response. The requester can then, in subsequent GetMessage requests, put the key in this field. This may help the Mailbox retain the position within their files of which mail entry to return to the requester.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="FollowUpRequest" type="datatypes:n1..1">
+        <xsd:annotation>
+          <xsd:documentation>Indicator to allow pharmacies to tell prescribers that this is a follow-up RxRenewalRequest or Change Request transaction (when the prescriber has not responded to the first RxRenewalRequest or first Change Request transaction in a reasonable amount of time). The field is not sent on an original request.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="ChangeOfPrescriptionStatusFlag" type="ecl:ChangeOfPrescriptionStatusCode">
+        <xsd:annotation>
+          <xsd:documentation>Used when the prescriber wishes to notify the pharmacy to no longer continue dispensing any open refills on an active prescription or to cancel a prescription that has not yet been dispensed.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="AllergyOrAdverseEvent" type="structures:AllergyChoice">
+        <xsd:annotation>
+          <xsd:documentation>The AllergyOrAdverseEvent element enables the sender to inform the recipient of all known patient allergies. The element is intended to provide this patient Allergy or AdverseEvent profile information to the recipient. If the AllergyOrAdverseEvent element is sent, it must include all known patient allergies. Responder can send back an AllergyOrAdverseEvent element, but should not echo back the AllergyOrAdverseEvent element received on the request. Note: The AllergyOrAdverseEvent element is not to be used to replace or add to the transfer of drug use evaluation information, which is instead communicated using the existing DUE composite in the medication information. This is a comprehensive list of allergies that the sender is aware of at the time the transaction is sent. Trading partners must support the AllergyOrAdverseEvent Element but use is optional on a case by case basis.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="BenefitsCoordination" type="structures:BaseBenefitsCoordination"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="DiagnosisGeneral" type="structures:DiagnosisGeneral">
+        <xsd:annotation>
+          <xsd:documentation>Element may be used only in the long-term care setting, where there are established processes supporting the sharing of diagnosis information between a resident’s facility and pharmacy. Note: The medication information enables communication of prescription-specific diagnosis information only—appropriate for use in new prescription messaging, but insufficient to support management of a resident’s full drug regimen. The intent is to convey the diagnosis that the prescribed medication is for.  There is also a need to convey diagnosis information in the Census event.  The difference here is that there is no related drug.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="Facility" type="structures:Facility">
+        <xsd:annotation>
+          <xsd:documentation>The Facility composite may be included to describe the care facility or other location at which the patient resides.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="FillStatus" type="structures:FillStatus"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="Patient" type="structures:PatientFullTypeAbstract"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="Pharmacy" type="structures:OptionalPharmacy">
+        <xsd:annotation>
+          <xsd:documentation>Value P2.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="Prescriber" type="structures:HistoryPrescriberChoice"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="DrugAdministrationRequest" type="script:DrugAdministrationRequest"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="Observation" type="structures:Observation"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="MedicationDispensed" type="structures:MedicationAbstract">
+        <xsd:annotation>
+          <xsd:documentation>Value D
+			</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="MedicationPrescribed" type="structures:MedicationAbstract">
+        <xsd:annotation>
+          <xsd:documentation>Value P.  At least one loop must contain 85 = Date Issued (Written Date). 	If  Filled or PartialFill, the medication prescribed may be sent as clarification. If NotFilled, the medication (dispensed) or (prescribed) is required, depending upon what the pharmacy has knowledge of.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="MedicationRequested" type="structures:MedicationAbstract">
+        <xsd:annotation>
+          <xsd:documentation>Value R
+
+Value R.	If one drug is being requested for the change, one loop for the drug being requested should be sent.
+	OR
+If the pharmacy wishes to send the prescriber a choice of alternative drugs, additional loops may be sent as alternatives. The first alternative sent in the loop is the preferred.
+</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="Supervisor" type="structures:SupervisorTypeAbstract"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="RequestedDates" type="datatypes:DateRange"/>
+      <xsd:element minOccurs="0" name="ProhibitRefillRequest" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>Allows the prescriber to indicate to the pharmacy that the pharmacy should never request refills for this specific prescription by any technique. 
+</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="ChangeReasonText" type="datatypes:an1..260">
+        <xsd:annotation>
+          <xsd:documentation>Explanation of the reason for the change request. 
+ 
+Used only in RXChange and adds additional information for RxChangeCode from ECL 
+ 
+</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="PDMPStatesRequested" type="structures:PDMPState"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  SCRIPTResponse  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType abstract="true" name="SCRIPTResponse">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="MessageRequestCode" type="ecl:MessageFunctionCode">
+        <xsd:annotation>
+          <xsd:documentation>For Long Term Care (LTC) Medication Change Process (Prescriber initiated CHANGE Request,) the NEWRX and the CANCEL will use this field to indicate the level of the change.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="ReturnReceipt" type="datatypes:an1..3"/>
+      <xsd:element minOccurs="0" name="RequestReferenceNumber" type="datatypes:an1..35"/>
+      <xsd:element minOccurs="0" name="ChangeOfPrescriptionStatusFlag" type="ecl:ChangeOfPrescriptionStatusCode"/>
+      <xsd:element minOccurs="0" name="Response" type="script:ResponseAbstractType"/>
+      <xsd:element minOccurs="0" name="AllergyOrAdverseEvent" type="structures:AllergyChoice">
+        <xsd:annotation>
+          <xsd:documentation>The AllergyOrAdverseEvent element enables the sender to inform the recipient of all known patient allergies. The element is intended to provide this patient Allergy or AdverseEvent profile information to the recipient. If the AllergyOrAdverseEvent element is sent, it must include all known patient allergies. Responder can send back an AllergyOrAdverseEvent element, but should not echo back the AllergyOrAdverseEvent element received on the request. Note: The AllergyOrAdverseEvent element is not to be used to replace or add to the transfer of drug use evaluation information, which is instead communicated using the existing DUE composite in the medication information. This is a comprehensive list of allergies that the sender is aware of at the time the transaction is sent. Trading partners must support the AllergyOrAdverseEvent Element but use is optional on a case by case basis.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="BenefitsCoordination" type="structures:BaseBenefitsCoordination"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="Facility" type="structures:Facility">
+        <xsd:annotation>
+          <xsd:documentation>The Facility composite may be included to describe the care facility or other location at which the patient resides.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="Patient" type="structures:PatientFullTypeAbstract"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="Pharmacy" type="structures:Pharmacy">
+        <xsd:annotation>
+          <xsd:documentation>Value P2.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="Prescriber" type="structures:HistoryPrescriberChoice">
+        <xsd:annotation>
+          <xsd:documentation>Value PC</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="Observation" type="structures:Observation"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="Supervisor" type="structures:SupervisorTypeAbstract">
+        <xsd:annotation>
+          <xsd:documentation>Value SU</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="MedicationDispensed" type="structures:MedicationAbstract">
+        <xsd:annotation>
+          <xsd:documentation>Value D</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="MedicationDispensedAdministered" type="structures:MedicationAbstract">
+        <xsd:annotation>
+          <xsd:documentation>Value A.  Only used in RxHistoryResponse</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="MedicationPrescribed" type="structures:MedicationAbstract">
+        <xsd:annotation>
+          <xsd:documentation>Value P.  At least one loop must contain 85 = Date Issued (Written Date). 	If  Filled or PartialFill, the medication prescribed may be sent as clarification. If NotFilled, the medication (dispensed) or (prescribed) is required, depending upon what the pharmacy has knowledge of.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="MedicationResponse" type="structures:RefillResponseReplacedMedication"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  TransferRxResponseType  <<choice>>  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="TransferRxResponseType">
+    <xsd:complexContent>
+      <xsd:restriction base="script:ResponseAbstractType">
+        <xsd:choice>
+          <xsd:element name="Approved" type="script:ApprovedWithoutReasonType"/>
+          <xsd:element name="Denied" type="script:DeniedTransferredResponseType"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="DeniedNewPrescriptionToFollow" type="datatypes:NoteType"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="ApprovedWithChanges" type="script:ApprovedAbstractType"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="Replace" type="datatypes:NoteType"/>
+        </xsd:choice>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:annotation>
+    <xsd:documentation>The NCPDP script.xsd defines SCRIPT domain transactions</xsd:documentation>
+  </xsd:annotation>
+</xsd:schema>

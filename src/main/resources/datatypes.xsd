@@ -1,0 +1,2216 @@
+﻿<?xml version="1.0" encoding="UTF-8"?><!--
+Copyright (c) 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015 NCPDP. All rights reserved. This work is owned by National Council for Prescription Drug Programs, Inc., 924Ø E. Raintree Drive, Scottsdale, AZ 8526Ø, (48Ø) 477-1ØØØ, ncpdp@ncpdp.org, and protected by the copyright laws of the United States. 17 U.S.C. §1Ø1, et. seq. Permission is given to Council members to copy and use the work or any part thereof in connection with the business purposes of the Council members.   
+
+The work may not be changed or altered. The work may not be sold, used or exploited for commercial purposes. This permission may be revoked by National Council for Prescription Drug Programs, Inc., at any time. The National Council for Prescription Drugs Programs, Inc. is not responsible for any errors or damage as a result of the use of the work.
+NCPDP recognizes the confidentiality of certain information exchanged electronically through the use of its standards. Users should be familiar with the federal, state, and local laws, regulations and codes requiring confidentiality of this information and should utilize the standards accordingly.
+
+NOTICE: In addition, this NCPDP Standard contains certain data fields and elements that may be completed by users with the proprietary information of third parties. The use and distribution of third parties' proprietary information without such third parties' consent, or the execution of a license or other agreement with such third party, could subject the user to numerous legal claims. All users are encouraged to contact such third parties to determine whether such information is proprietary and if necessary, to consult with legal counsel to make arrangements for the use and distribution of such proprietary information.
+--><xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.ncpdp.org/schema/datatypes" version="WG110066201508" xmlns:datatypes="http://www.ncpdp.org/schema/datatypes" xmlns:ecl="http://www.ncpdp.org/schema/ecl" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import namespace="http://www.ncpdp.org/schema/ecl" schemaLocation="ecl.xsd"/>
+  <!-- ================================================== -->
+  <!-- =====  Simple Type Definitions  -->
+  <!-- ================================================== -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  ANDOR  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:simpleType name="ANDOR">
+    <xsd:annotation>
+      <xsd:documentation>Used exclusively for SIG</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="AND|OR"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  ANDORNOT  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:simpleType name="ANDORNOT">
+    <xsd:annotation>
+      <xsd:documentation>Used exclusively for SIG</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="AND|OR|NOT"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  ANDORTHEN  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:simpleType name="ANDORTHEN">
+    <xsd:annotation>
+      <xsd:documentation>Used exclusively for SIG</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="AND|OR|THEN"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  ANDORTHENNOT  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:simpleType name="ANDORTHENNOT">
+    <xsd:annotation>
+      <xsd:documentation>Used exclusively for SIG</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="AND|OR|THEN|NOT"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  ANDORTO  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:simpleType name="ANDORTO">
+    <xsd:annotation>
+      <xsd:documentation>Used exclusively for SIG</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="AND|OR|TO"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  BodyMetricQualifier  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:simpleType name="BodyMetricQualifier">
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="1|2"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  GeneralAddressType  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:simpleType name="GeneralAddressType">
+    <xsd:annotation>
+      <xsd:documentation>Qualifier for the type of identifier for receiver.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="datatypes:an1..255"/>
+  </xsd:simpleType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  MailAddressType  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:simpleType name="MailAddressType">
+    <xsd:annotation>
+      <xsd:documentation>Qualifier for the type of identifier for receiver.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="datatypes:an1..80"/>
+  </xsd:simpleType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  SimpleDateType  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:simpleType name="SimpleDateType">
+    <xsd:restriction base="xsd:date"/>
+  </xsd:simpleType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  TOOR  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:simpleType name="TOOR">
+    <xsd:annotation>
+      <xsd:documentation>Used exclusively for SIG</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="TO|OR"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  TerminologyType  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:simpleType name="TerminologyType">
+    <xsd:annotation>
+      <xsd:documentation>Used exclusively for SIG</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="1|2"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  UtcDateType  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:simpleType name="UtcDateType">
+    <xsd:restriction base="xsd:dateTime"/>
+  </xsd:simpleType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  ZipCodeType  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:simpleType name="ZipCodeType">
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="(\d{5})|(\d{9})"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  an  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:simpleType name="an">
+    <xsd:annotation>
+      <xsd:documentation>NCPDP Length Constrained Type</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="([!-~]|[ ])*[!-~]([!-~]|[ ])*"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  an1..10  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:simpleType name="an1..10">
+    <xsd:annotation>
+      <xsd:documentation>NCPDP Length Constrained Type</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="datatypes:an">
+      <xsd:maxLength value="10"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  an1..100  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:simpleType name="an1..100">
+    <xsd:annotation>
+      <xsd:documentation>NCPDP Length Constrained Type</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="datatypes:an">
+      <xsd:maxLength value="100"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  an1..1000  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:simpleType name="an1..1000">
+    <xsd:annotation>
+      <xsd:documentation>NCPDP Length Constrained Type</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="datatypes:an">
+      <xsd:maxLength value="1000"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  an1..105  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:simpleType name="an1..105">
+    <xsd:annotation>
+      <xsd:documentation>NCPDP Length Constrained Type</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="datatypes:an">
+      <xsd:maxLength value="105"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  an1..11  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:simpleType name="an1..11">
+    <xsd:annotation>
+      <xsd:documentation>NCPDP Length Constrained Type</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="datatypes:an">
+      <xsd:maxLength value="11"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  an1..14  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:simpleType name="an1..14">
+    <xsd:annotation>
+      <xsd:documentation>NCPDP Length Constrained Type</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="datatypes:an">
+      <xsd:maxLength value="14"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  an1..140  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:simpleType name="an1..140">
+    <xsd:annotation>
+      <xsd:documentation>NCPDP Length Constrained Type</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="datatypes:an">
+      <xsd:maxLength value="140"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  an1..15  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:simpleType name="an1..15">
+    <xsd:annotation>
+      <xsd:documentation>NCPDP Length Constrained Type</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="datatypes:an">
+      <xsd:maxLength value="15"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  an1..17  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:simpleType name="an1..17">
+    <xsd:annotation>
+      <xsd:documentation>NCPDP Length Constrained Type</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="datatypes:an">
+      <xsd:maxLength value="17"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  an1..19  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:simpleType name="an1..19">
+    <xsd:annotation>
+      <xsd:documentation>NCPDP Length Constrained Type</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="datatypes:an">
+      <xsd:maxLength value="19"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  an1..2  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:simpleType name="an1..2">
+    <xsd:annotation>
+      <xsd:documentation>NCPDP Length Constrained Type</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="datatypes:an">
+      <xsd:maxLength value="2"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  an1..2000  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:simpleType name="an1..2000">
+    <xsd:annotation>
+      <xsd:documentation>NCPDP Length Constrained Type</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="datatypes:an">
+      <xsd:maxLength value="2000"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  an1..210  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:simpleType name="an1..210">
+    <xsd:annotation>
+      <xsd:documentation>NCPDP Length Constrained Type</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="datatypes:an">
+      <xsd:maxLength value="210"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  an1..25  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:simpleType name="an1..25">
+    <xsd:annotation>
+      <xsd:documentation>NCPDP Length Constrained Type</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="datatypes:an">
+      <xsd:maxLength value="25"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  an1..254  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:simpleType name="an1..254">
+    <xsd:annotation>
+      <xsd:documentation>NCPDP Length Constrained Type</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="datatypes:an">
+      <xsd:maxLength value="254"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  an1..255  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:simpleType name="an1..255">
+    <xsd:annotation>
+      <xsd:documentation>NCPDP Length Constrained Type</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="datatypes:an">
+      <xsd:maxLength value="255"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  an1..260  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:simpleType name="an1..260">
+    <xsd:annotation>
+      <xsd:documentation>NCPDP Length Constrained Type</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="datatypes:an">
+      <xsd:maxLength value="260"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  an1..3  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:simpleType name="an1..3">
+    <xsd:annotation>
+      <xsd:documentation>NCPDP Length Constrained Type</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="datatypes:an">
+      <xsd:maxLength value="3"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  an1..35  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:simpleType name="an1..35">
+    <xsd:annotation>
+      <xsd:documentation>NCPDP Length Constrained Type</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="datatypes:an">
+      <xsd:maxLength value="35"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  an1..4  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:simpleType name="an1..4">
+    <xsd:annotation>
+      <xsd:documentation>NCPDP Length Constrained Type</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="datatypes:an">
+      <xsd:maxLength value="4"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  an1..40  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:simpleType name="an1..40">
+    <xsd:annotation>
+      <xsd:documentation>NCPDP Length Constrained Type</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="datatypes:an">
+      <xsd:maxLength value="40"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  an1..50  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:simpleType name="an1..50">
+    <xsd:annotation>
+      <xsd:documentation>NCPDP Length Constrained Type</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="datatypes:an">
+      <xsd:maxLength value="50"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  an1..6  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:simpleType name="an1..6">
+    <xsd:annotation>
+      <xsd:documentation>NCPDP Length Constrained Type</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="datatypes:an">
+      <xsd:maxLength value="6"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  an1..70  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:simpleType name="an1..70">
+    <xsd:annotation>
+      <xsd:documentation>NCPDP Length Constrained Type</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="datatypes:an">
+      <xsd:maxLength value="70"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  an1..8  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:simpleType name="an1..8">
+    <xsd:annotation>
+      <xsd:documentation>NCPDP Length Constrained Type</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="datatypes:an">
+      <xsd:maxLength value="8"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  an1..80  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:simpleType name="an1..80">
+    <xsd:annotation>
+      <xsd:documentation>NCPDP Length Constrained Type
+</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="datatypes:an">
+      <xsd:maxLength value="80"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  an1..9  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:simpleType name="an1..9">
+    <xsd:annotation>
+      <xsd:documentation>NCPDP Length Constrained Type</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="datatypes:an">
+      <xsd:maxLength value="9"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  n  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:simpleType name="n">
+    <xsd:annotation>
+      <xsd:documentation>NCPDP Length Constrained Type</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="datatypes:an">
+      <xsd:pattern value="[0-9]+(\.[0-9]+)?"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  n1..1  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:simpleType name="n1..1">
+    <xsd:annotation>
+      <xsd:documentation>NCPDP Length Constrained Type</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="datatypes:n">
+      <xsd:maxLength value="1"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  n1..10  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:simpleType name="n1..10">
+    <xsd:annotation>
+      <xsd:documentation>NCPDP Length Constrained Type</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="datatypes:n">
+      <xsd:maxLength value="10"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  n1..11  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:simpleType name="n1..11">
+    <xsd:annotation>
+      <xsd:documentation>NCPDP Length Constrained Type</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="datatypes:n">
+      <xsd:maxLength value="11"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  n1..14  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:simpleType name="n1..14">
+    <xsd:annotation>
+      <xsd:documentation>NCPDP Length Constrained Type</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="datatypes:n">
+      <xsd:maxLength value="14"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  n1..15  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:simpleType name="n1..15">
+    <xsd:annotation>
+      <xsd:documentation>NCPDP Length Constrained Type</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="datatypes:n">
+      <xsd:maxLength value="15"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  n1..18  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:simpleType name="n1..18">
+    <xsd:annotation>
+      <xsd:documentation>NCPDP Length Constrained Type</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="datatypes:n">
+      <xsd:maxLength value="18"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  n1..2  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:simpleType name="n1..2">
+    <xsd:annotation>
+      <xsd:documentation>NCPDP Length Constrained Type</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="datatypes:n">
+      <xsd:maxLength value="2"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  n1..3  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:simpleType name="n1..3">
+    <xsd:annotation>
+      <xsd:documentation>NCPDP Length Constrained Type</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="datatypes:n">
+      <xsd:maxLength value="3"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  n1..4  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:simpleType name="n1..4">
+    <xsd:annotation>
+      <xsd:documentation>NCPDP Length Constrained Type</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="datatypes:n">
+      <xsd:maxLength value="4"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  n1..8  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:simpleType name="n1..8">
+    <xsd:annotation>
+      <xsd:documentation>NCPDP Length Constrained Type</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="datatypes:n">
+      <xsd:maxLength value="8"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  n2  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:simpleType name="n2">
+    <xsd:annotation>
+      <xsd:documentation>NCPDP Length Constrained Type</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="datatypes:an">
+      <xsd:maxLength value="2"/>
+      <xsd:pattern value="[0-9][0-9]"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <!-- ================================================== -->
+  <!-- =====  Complex Type Definitions  -->
+  <!-- ================================================== -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  AddressType  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="AddressType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="AddressLine1" type="datatypes:an1..40"/>
+      <xsd:element minOccurs="0" name="AddressLine2" type="datatypes:an1..40">
+        <xsd:annotation>
+          <xsd:documentation>Use only when a second address line is needed and AddressLine1 has been used</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="City" type="datatypes:an1..35"/>
+      <xsd:element minOccurs="0" name="StateProvince" type="datatypes:an">
+        <xsd:annotation>
+          <xsd:documentation>State must be mailable in the country (e.g. when exchanging US States, the two digit alpha code is to be used, in Canada the “two space two” Province code is to be used). (ISO-3166-2 link from http://www.iso.org/iso/country_codes or http://en.wikipedia.org/wiki/ISO_3166-2)</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="PostalCode" type="datatypes:an">
+        <xsd:annotation>
+          <xsd:documentation>PostalCode must be mailable in the country (e.g. for US, the PostalCode length is 5 or 9, when used for Canadian Postal Code – This left justified field contains the three-digit forward sortation area (FSA) followed by a space, then followed by a Local Delivery Unit.  (Format A0A 0A0, where A is a letter and 0 is a digit, with a space separating the third and fourth characters.)</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="CountryCode" type="datatypes:an1..2">
+        <xsd:annotation>
+          <xsd:documentation>Required if country is not “US” is placed in CountryCode when it is in an optional address type. See Reference for country code: ISO-3166-1 http://www.iso.org/iso/country_codes.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  BinaryDataType  <<complexType>>  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="BinaryDataType">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string">
+        <xsd:attribute name="LengthBytes" type="xsd:int" use="required"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  CDCCode  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="CDCCode">
+    <xsd:annotation>
+      <xsd:documentation>CDCCode constrains NCPDP Coded Types to Value Set Definitions as defined by CDC
+
+http://www.cdc.gov/phin/activities/standards/vocabulary</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Code" type="ecl:Code"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  CFCompoundIngredient  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="CFCompoundIngredient">
+    <xsd:annotation>
+      <xsd:documentation>Drug Composition Structure</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:restriction base="datatypes:CompoundIngredient">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="CompoundIngredient" type="datatypes:CFIngredient"/>
+          <xsd:element name="Quantity" type="datatypes:CompoundQuantity"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="DrugUseEvaluation" type="datatypes:DrugUseEvaluation"/>
+        </xsd:sequence>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  CFCompoundIngredientLotNotUsed  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="CFCompoundIngredientLotNotUsed">
+    <xsd:annotation>
+      <xsd:documentation>Drug Composition Structure</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:restriction base="datatypes:CompoundIngredient">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="CompoundIngredient" type="datatypes:CFIngredientLotNotUsed"/>
+          <xsd:element name="Quantity" type="datatypes:CompoundQuantity"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="DrugUseEvaluation" type="datatypes:DrugUseEvaluation"/>
+        </xsd:sequence>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  CFDrugCoded  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="CFDrugCoded">
+    <xsd:annotation>
+      <xsd:documentation>Coded Drug Structure used in Medication</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:restriction base="datatypes:DrugCoded">
+        <xsd:sequence>
+          <xsd:element name="ProductCode" type="datatypes:ProductCode">
+            <xsd:annotation>
+              <xsd:documentation>RxRenewalRequest and RxChangeRequest – whenever possible, send the drug number. If CompoundCoded = 2 (Compound), this field must not be sent.				</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="Strength" type="datatypes:Strength"/>
+          <xsd:element minOccurs="0" name="DrugDBCode" type="datatypes:DrugDBCode">
+            <xsd:annotation>
+              <xsd:documentation>If CompoundCoded = 2 (Compound), this field must not be sent.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="DEASchedule" type="datatypes:NCICode">
+            <xsd:annotation>
+              <xsd:documentation>Required if the medication is categorized as a controlled substance by the Drug Enforcement Administration (DEA). The DEA Schedule would be populated by the system generating the message, and would utilize the Federal DEA Schedule classification code list, based on federal classification of the medication or the state reclassification of the medication. 
+
+If CompoundCoded = 2 (Compound), this field must not be sent.
+            
+NCPDP DEASchedule Terminology – available at
+http://www.cancer.gov/cancertopics/terminologyresources/page7 </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  CFIngredient  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="CFIngredient">
+    <xsd:annotation>
+      <xsd:documentation>Drug Composition Structure</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:restriction base="datatypes:Ingredient">
+        <xsd:sequence>
+          <xsd:element name="CompoundIngredientItemDescription" type="datatypes:an1..105">
+            <xsd:annotation>
+              <xsd:documentation>The appropriate source data element should contain the description from the commercially available product name (or the name that appeared when it was commercially available). It may generally contain the drug name, strength unit, and form, as appropriate.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="ItemNumber" type="datatypes:ProductCodeExtended"/>
+          <xsd:element minOccurs="0" name="Strength" type="datatypes:Strength"/>
+          <xsd:element minOccurs="0" name="DEASchedule" type="datatypes:NCICode">
+            <xsd:annotation>
+              <xsd:documentation>NCPDP DEASchedule Terminology – available at
+http://www.cancer.gov/cancertopics/terminologyresources/page7
+</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="50" name="LotNumber" type="datatypes:LotNumber"/>
+        </xsd:sequence>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  CFIngredientLotNotUsed  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="CFIngredientLotNotUsed">
+    <xsd:annotation>
+      <xsd:documentation>Drug Composition Structure</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:restriction base="datatypes:Ingredient">
+        <xsd:sequence>
+          <xsd:element name="CompoundIngredientItemDescription" type="datatypes:an1..105">
+            <xsd:annotation>
+              <xsd:documentation>The appropriate source data element should contain the description from the commercially available product name (or the name that appeared when it was commercially available). It may generally contain the drug name, strength unit, and form, as appropriate.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="ItemNumber" type="datatypes:ProductCodeExtended"/>
+          <xsd:element minOccurs="0" name="Strength" type="datatypes:Strength"/>
+          <xsd:element minOccurs="0" name="DEASchedule" type="datatypes:NCICode">
+            <xsd:annotation>
+              <xsd:documentation>NCPDP DEASchedule Terminology – available at
+http://www.cancer.gov/cancertopics/terminologyresources/page7
+</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="LotNumber" type="datatypes:LotNumber"/>
+        </xsd:sequence>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  CoAgentCode  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="CoAgentCode">
+    <xsd:annotation>
+      <xsd:documentation>DUE CoAgent ID Qualified Code</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="CoAgentCode" type="datatypes:CoAgentQualifiedCodeWithDescription"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  CoAgentQualifiedCodeWithDescription  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="CoAgentQualifiedCodeWithDescription">
+    <xsd:annotation>
+      <xsd:documentation>General Purpose NCPDP Vocabulary Constraint supporting Code and Qualifier </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:restriction base="datatypes:QualifiedCodeWithDescription">
+        <xsd:sequence>
+          <xsd:element name="Code" type="ecl:Code"/>
+          <xsd:element name="Qualifier" type="ecl:DUECoAgentIDQualifierCode"/>
+          <xsd:element name="Description" type="datatypes:an"/>
+        </xsd:sequence>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  CommunicationNumbersType  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="CommunicationNumbersType">
+    <xsd:sequence>
+      <xsd:element name="PrimaryTelephone" type="datatypes:PhoneType"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="Beeper" type="datatypes:PhoneType"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="ElectronicMail" type="datatypes:MailAddressType"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="Fax" type="datatypes:PhoneType"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="HomeTelephone" type="datatypes:PhoneType"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="WorkTelephone" type="datatypes:PhoneType"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="OtherTelephone" type="datatypes:PhoneType"/>
+      <xsd:element minOccurs="0" name="DirectAddress" type="datatypes:an1..254">
+        <xsd:annotation>
+          <xsd:documentation>THE DIRECT PROJECT ADDRESS OF THE ENTITY.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  CommunicationNumbersTypeRestricted  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="CommunicationNumbersTypeRestricted">
+    <xsd:complexContent>
+      <xsd:restriction base="datatypes:CommunicationNumbersType">
+        <xsd:sequence>
+          <xsd:element name="PrimaryTelephone" type="datatypes:PhoneType"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="Beeper" type="datatypes:PhoneType"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="ElectronicMail" type="datatypes:MailAddressType"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="Fax" type="datatypes:PhoneType"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="HomeTelephone" type="datatypes:PhoneType"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="WorkTelephone" type="datatypes:PhoneType"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="OtherTelephone" type="datatypes:PhoneType"/>
+          <xsd:element minOccurs="0" name="DirectAddress" type="datatypes:an1..254">
+            <xsd:annotation>
+              <xsd:documentation>THE DIRECT PROJECT ADDRESS OF THE ENTITY.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  CompoundIngredient  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="CompoundIngredient">
+    <xsd:annotation>
+      <xsd:documentation>Drug Composition Structure</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="CompoundIngredient" type="datatypes:Ingredient"/>
+      <xsd:element name="Quantity" type="datatypes:CompoundQuantity"/>
+      <xsd:element maxOccurs="5" minOccurs="0" name="DrugUseEvaluation" type="datatypes:DrugUseEvaluation"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  CompoundIngredientLotNotUsed  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="CompoundIngredientLotNotUsed">
+    <xsd:annotation>
+      <xsd:documentation>Drug Composition Structure</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:restriction base="datatypes:CompoundIngredient">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="CompoundIngredient" type="datatypes:IngredientLotNotUsed"/>
+          <xsd:element name="Quantity" type="datatypes:CompoundQuantity"/>
+          <xsd:element maxOccurs="5" minOccurs="0" name="DrugUseEvaluation" type="datatypes:DrugUseEvaluation"/>
+        </xsd:sequence>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  CompoundIngredientLotNotUsedNoDUE  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="CompoundIngredientLotNotUsedNoDUE">
+    <xsd:annotation>
+      <xsd:documentation>Drug Composition Structure</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:restriction base="datatypes:CompoundIngredient">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="CompoundIngredient" type="datatypes:IngredientLotNotUsed"/>
+          <xsd:element name="Quantity" type="datatypes:CompoundQuantity"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="DrugUseEvaluation" type="datatypes:DrugUseEvaluation"/>
+        </xsd:sequence>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  CompoundQuantity  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="CompoundQuantity">
+    <xsd:sequence>
+      <xsd:element name="Value" type="datatypes:n1..14"/>
+      <xsd:element name="CodeListQualifier" type="ecl:QuantityCodeListQualifierCode"/>
+      <xsd:element name="QuantityUnitOfMeasure" type="datatypes:NCICode">
+        <xsd:annotation>
+          <xsd:documentation>NCPDP Drug QuantityUnitOfMeasure Terminology - available at 
+http://www.cancer.gov/cancertopics/terminologyresources/page7
+See External Code List Introduction for information on NCI Thesaurus Code Lists.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  DateRange  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="DateRange">
+    <xsd:sequence>
+      <xsd:element name="StartDate" type="datatypes:DateType"/>
+      <xsd:element name="EndDate" type="datatypes:DateType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  DateType  <<choice>>  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="DateType">
+    <xsd:choice>
+      <xsd:element name="Date" type="datatypes:SimpleDateType"/>
+      <xsd:element name="DateTime" type="datatypes:UtcDateType"/>
+    </xsd:choice>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  DateTypeFlag  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="DateTypeFlag">
+    <xsd:sequence>
+      <xsd:element name="IsDateTimeRequired" type="ecl:BooleanCode">
+        <xsd:annotation>
+          <xsd:documentation>Indicates whether datetime format is required for date answer.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  DiabeticSupplyType  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="DiabeticSupplyType">
+    <xsd:sequence>
+      <xsd:element name="TestingFrequency" type="datatypes:n1..2"/>
+      <xsd:element minOccurs="0" name="TestingFrequencyNotes" type="datatypes:an1..210">
+        <xsd:annotation>
+          <xsd:documentation>If used, this element should contain additional information that is not duplicative to the discrete elements in the transaction including, but not limited to, the medication elements or the sig elements.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="SupplyIndicator" type="ecl:BooleanCode">
+        <xsd:annotation>
+          <xsd:documentation>Y = Prescription is for a Diabetic Supply, N = Prescription is not for a Diabetic Supply</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="InsulinDependent" type="ecl:BooleanCode">
+        <xsd:annotation>
+          <xsd:documentation>Y = Patient is Insulin Treated, N = Patient is not Insulin Treated.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="HasAutomatedInsulinDevice" type="ecl:BooleanCode">
+        <xsd:annotation>
+          <xsd:documentation>Y = Patient has an automated insulin device, N = Patient does not have an automated insulin device.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  DiagnosisQualifiedCodeWithDescription  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="DiagnosisQualifiedCodeWithDescription">
+    <xsd:annotation>
+      <xsd:documentation>General Purpose NCPDP Vocabulary Constraint supporting Code and Qualifier </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:restriction base="datatypes:QualifiedCodeWithDescription">
+        <xsd:sequence>
+          <xsd:element name="Code" type="ecl:Code"/>
+          <xsd:element name="Qualifier" type="ecl:PrimaryDiagnosisCodeQualifierCode"/>
+          <xsd:element name="Description" type="datatypes:an"/>
+          <xsd:element minOccurs="0" name="DateOfLastOfficeVisit" type="datatypes:DateType"/>
+        </xsd:sequence>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  DiagnosisQualifiedCodeWithDescriptionRestricted  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="DiagnosisQualifiedCodeWithDescriptionRestricted">
+    <xsd:annotation>
+      <xsd:documentation>General Purpose NCPDP Vocabulary Constraint supporting Code and Qualifier </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:restriction base="datatypes:DiagnosisQualifiedCodeWithDescription">
+        <xsd:sequence>
+          <xsd:element name="Code" type="ecl:Code"/>
+          <xsd:element name="Qualifier" type="ecl:PrimaryDiagnosisCodeQualifierCode"/>
+          <xsd:element name="Description" type="datatypes:an"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="DateOfLastOfficeVisit" type="datatypes:DateType"/>
+        </xsd:sequence>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  DoseUnitOfMeasureCode  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="DoseUnitOfMeasureCode">
+    <xsd:annotation>
+      <xsd:documentation>NCPDP Vocabulary Constraint supporting Code and Qualifier with Required Text.  If code not available from source, must use Code = C38046, Text of “Unspecified” and appropriate Clarifying Free Text. See section “Use of Clarifying Free Text Elements”. See imp guide for more information.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Text" type="datatypes:an"/>
+      <xsd:element name="Qualifier" type="ecl:SigUnitOfMeasure"/>
+      <xsd:element name="Code" type="ecl:Code"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  DrugCoded  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="DrugCoded">
+    <xsd:annotation>
+      <xsd:documentation>Coded Drug Structure used in Medication</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="ProductCode" type="datatypes:ProductCode">
+        <xsd:annotation>
+          <xsd:documentation>RxRenewalRequest and RxChangeRequest – whenever possible, send the drug number. If CompoundCoded = 2 (Compound), this field must not be sent.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="Strength" type="datatypes:Strength"/>
+      <xsd:element minOccurs="0" name="DrugDBCode" type="datatypes:DrugDBCode">
+        <xsd:annotation>
+          <xsd:documentation>If CompoundCoded = 2 (Compound), this field must not be sent.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="DEASchedule" type="datatypes:NCICode">
+        <xsd:annotation>
+          <xsd:documentation>Required if the medication is categorized as a controlled substance by the Drug Enforcement Administration (DEA). The DEA Schedule would be populated by the system generating the message, and would utilize the Federal DEA Schedule classification code list, based on federal classification of the medication or the state reclassification of the medication. 
+
+If CompoundCoded = 2 (Compound), this field must not be sent.
+            
+NCPDP DEASchedule Terminology – available at
+http://www.cancer.gov/cancertopics/terminologyresources/page7 </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  DrugDBCode  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="DrugDBCode">
+    <xsd:annotation>
+      <xsd:documentation>Coded Drug Structure used in Medication from alternative source databases</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:restriction base="datatypes:QualifiedCode">
+        <xsd:sequence>
+          <xsd:element name="Code" type="ecl:Code"/>
+          <xsd:element name="Qualifier" type="ecl:DrugDBQualifiersCode"/>
+        </xsd:sequence>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  DrugProductCodeWithText  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="DrugProductCodeWithText">
+    <xsd:annotation>
+      <xsd:documentation>Drug Product structure used in Census Allergy</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="Code" type="ecl:Code"/>
+      <xsd:element minOccurs="0" name="Qualifier" type="ecl:ProductQualifiersCodeExtended"/>
+      <xsd:element name="Text" type="datatypes:an"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  DrugUseEvaluation  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="DrugUseEvaluation">
+    <xsd:annotation>
+      <xsd:documentation>Drug Use Evaluation structure used in Medication</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="ServiceReasonCode" type="ecl:DUEReasonForServiceCode"/>
+      <xsd:element minOccurs="0" name="ProfessionalServiceCode" type="ecl:DUEProfessionalServiceCode"/>
+      <xsd:element minOccurs="0" name="ServiceResultCode" type="ecl:DUEResultOfServiceCode"/>
+      <xsd:element minOccurs="0" name="CoAgent" type="datatypes:CoAgentCode"/>
+      <xsd:element minOccurs="0" name="ClinicalSignificanceCode" type="ecl:DUEClinicalSignificanceCode"/>
+      <xsd:element minOccurs="0" name="AcknowledgementReason" type="datatypes:an1..100">
+        <xsd:annotation>
+          <xsd:documentation>Mandatory if DUE Professional Service Code = “ZZ” (Other) to provide further explanation.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  FacilityID  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="FacilityID">
+    <xsd:annotation>
+      <xsd:documentation>FacilityID is explicit ID structure to improve comprehension and validation of ID by using explicit tags for each ID type</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:restriction base="datatypes:SuperSetID">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="NCPDPID" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="StateLicenseNumber" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="MedicareNumber" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="MedicaidNumber" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="UPIN" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="FacilityID" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="PayerID" type="datatypes:an1..80"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="ProcessorIdentificationNumber" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="BINLocationNumber" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="MedicalRecordIdentificationNumberEHR" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="PatientAccountNumber" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="DEANumber" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="HIN" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="NAICCode" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="SocialSecurity" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="NPI" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="CertificateToPrescribe" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="Data2000WaiverID" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="MutuallyDefined" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="REMSHealthcareSettingEnrollmentID" type="datatypes:an1..35">
+            <xsd:annotation>
+              <xsd:documentation>An ID assigned to an institution or a practice which is responsible for ordering or administering a REMS drug.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  FinalRouteOfAdministrationCode  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="FinalRouteOfAdministrationCode">
+    <xsd:annotation>
+      <xsd:documentation>Route of Administration used in Medication</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="Text" type="datatypes:an"/>
+      <xsd:element minOccurs="0" name="Code" type="datatypes:SNOMEDCode"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  HistorySourceAbstract  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="HistorySourceAbstract">
+    <xsd:annotation>
+      <xsd:documentation>Historical Reference used in Medication</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Source" type="datatypes:SourceQualifier"/>
+      <xsd:element minOccurs="0" name="SourceReference" type="datatypes:an1..35">
+        <xsd:annotation>
+          <xsd:documentation>Prescription Number associated to medication history record.
+If SourceQualifier value is “P2” (Pharmacy), if sent, this field must contain the pharmacy’s prescription number. 
+If SourceQualifier value is “PC” (Prescriber), this field is not sent. The Prescriber Order Number is found in Drug section.
+If SourceQualifier value is “PY” (Payer), if sent, this field must contain the pharmacy’s prescription number from the payer system from claims processing.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="FillNumber" type="datatypes:n2">
+        <xsd:annotation>
+          <xsd:documentation>Defines the dispensing episode as an initial fill or an authorized refill. If SourceQualifier value is “P2” (Pharmacy), if sent, this field must contain the fill number from the pharmacy. If SourceQualifier value is “PC” (Prescriber), this field is not sent. If SourceQualifier value is “PY” (Payer), if sent, this field must contain the pharmacy’s fill number from the payer system from claims processing. Values: 00 = initial fill, 01 = first refill, 02 = second refill, etc. Allowed values 00 thru 99. This element must always be two significant digits (e.g. 01, 02, 08, 14, 99).</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="PaymentType" type="ecl:PaymentTypeCode"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  HistorySourceForTransfer  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="HistorySourceForTransfer">
+    <xsd:annotation>
+      <xsd:documentation>Historical Reference used in Medication</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="Source" type="datatypes:SourceQualifierForTransfer"/>
+      <xsd:element name="SourceReference" type="datatypes:an1..35">
+        <xsd:annotation>
+          <xsd:documentation>Prescription Number associated to transfer prescription record. Current business cases for this transaction support value “P2” (Pharmacy). If SourceQualifier value is “P2” (Pharmacy), this field must contain the pharmacy’s prescription number. See SCRIPT Implementation Guide for details.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="FillNumber" type="datatypes:n2">
+        <xsd:annotation>
+          <xsd:documentation>This element must always be two significant digits (e.g. 01, 02, 08, 14, 99)</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  HistorySourceID  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="HistorySourceID">
+    <xsd:annotation>
+      <xsd:documentation>HistorySourceID is explicit ID structure to improve comprehension and validation of ID by using explicit tags for each ID type</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:restriction base="datatypes:SuperSetID">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="NCPDPID" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="StateLicenseNumber" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="MedicareNumber" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="MedicaidNumber" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="UPIN" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="FacilityID" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="PayerID" type="datatypes:an1..80"/>
+          <xsd:element minOccurs="0" name="ProcessorIdentificationNumber" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="BINLocationNumber" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="MedicalRecordIdentificationNumberEHR" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="PatientAccountNumber" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="DEANumber" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="HIN" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="NAICCode" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="SocialSecurity" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="NPI" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="CertificateToPrescribe" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="Data2000WaiverID" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="MutuallyDefined" type="datatypes:an1..35"/>
+        </xsd:sequence>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  HistorySourceWithPayment  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="HistorySourceWithPayment">
+    <xsd:annotation>
+      <xsd:documentation>Historical Reference used in Medication</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:restriction base="datatypes:HistorySourceAbstract">
+        <xsd:sequence>
+          <xsd:element name="Source" type="datatypes:SourceQualifier"/>
+          <xsd:element minOccurs="0" name="SourceReference" type="datatypes:an1..35">
+            <xsd:annotation>
+              <xsd:documentation>Prescription Number associated to medication history record.
+If SourceQualifier value is “P2” (Pharmacy), if sent, this field must contain the pharmacy’s prescription number. 
+If SourceQualifier value is “PC” (Prescriber), this field is not sent. The Prescriber Order Number is found in Drug section.
+If SourceQualifier value is “PY” (Payer), if sent, this field must contain the pharmacy’s prescription number from the payer system from claims processing.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="FillNumber" type="datatypes:n2">
+            <xsd:annotation>
+              <xsd:documentation>Defines the dispensing episode as an initial fill or an authorized refill. If SourceQualifier value is “P2” (Pharmacy), if sent, this field must contain the fill number from the pharmacy. If SourceQualifier value is “PC” (Prescriber), this field is not sent. If SourceQualifier value is “PY” (Payer), if sent, this field must contain the pharmacy’s fill number from the payer system from claims processing. Values: 00 = initial fill, 01 = first refill, 02 = second refill, etc. Allowed values 00 thru 99. This element must always be two significant digits (e.g. 01, 02, 08, 14, 99).</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="PaymentType" type="ecl:PaymentTypeCode"/>
+        </xsd:sequence>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  HistorySourceWithoutPayment  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="HistorySourceWithoutPayment">
+    <xsd:annotation>
+      <xsd:documentation>Historical Reference used in Medication</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:restriction base="datatypes:HistorySourceAbstract">
+        <xsd:sequence>
+          <xsd:element name="Source" type="datatypes:SourceQualifier"/>
+          <xsd:element minOccurs="0" name="SourceReference" type="datatypes:an1..35">
+            <xsd:annotation>
+              <xsd:documentation>Prescription Number associated to medication history record.
+If SourceQualifier value is “P2” (Pharmacy), if sent, this field must contain the pharmacy’s prescription number. 
+If SourceQualifier value is “PC” (Prescriber), this field is not sent. The Prescriber Order Number is found in Drug section.
+If SourceQualifier value is “PY” (Payer), if sent, this field must contain the pharmacy’s prescription number from the payer system from claims processing.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="FillNumber" type="datatypes:n2">
+            <xsd:annotation>
+              <xsd:documentation>Defines the dispensing episode as an initial fill or an authorized refill. If SourceQualifier value is “P2” (Pharmacy), if sent, this field must contain the fill number from the pharmacy. If SourceQualifier value is “PC” (Prescriber), this field is not sent. If SourceQualifier value is “PY” (Payer), if sent, this field must contain the pharmacy’s fill number from the payer system from claims processing. Values: 00 = initial fill, 01 = first refill, 02 = second refill, etc. Allowed values 00 thru 99. This element must always be two significant digits (e.g. 01, 02, 08, 14, 99).</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="PaymentType" type="ecl:PaymentTypeCode"/>
+        </xsd:sequence>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  Ingredient  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="Ingredient">
+    <xsd:annotation>
+      <xsd:documentation>Drug Composition Structure</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="CompoundIngredientItemDescription" type="datatypes:an1..105">
+        <xsd:annotation>
+          <xsd:documentation>The appropriate source data element should contain the description from the commercially available product name (or the name that appeared when it was commercially available). It may generally contain the drug name, strength unit, and form, as appropriate.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="ItemNumber" type="datatypes:ProductCodeExtended"/>
+      <xsd:element minOccurs="0" name="Strength" type="datatypes:Strength"/>
+      <xsd:element minOccurs="0" name="DEASchedule" type="datatypes:NCICode">
+        <xsd:annotation>
+          <xsd:documentation>NCPDP DEASchedule Terminology – available at
+http://www.cancer.gov/cancertopics/terminologyresources/page7
+</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="LotNumber" type="datatypes:LotNumber"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  IngredientLotNotUsed  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="IngredientLotNotUsed">
+    <xsd:annotation>
+      <xsd:documentation>Drug Composition Structure</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:restriction base="datatypes:Ingredient">
+        <xsd:sequence>
+          <xsd:element name="CompoundIngredientItemDescription" type="datatypes:an1..105">
+            <xsd:annotation>
+              <xsd:documentation>The appropriate source data element should contain the description from the commercially available product name (or the name that appeared when it was commercially available). It may generally contain the drug name, strength unit, and form, as appropriate.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ItemNumber" type="datatypes:ProductCodeExtended"/>
+          <xsd:element minOccurs="0" name="Strength" type="datatypes:Strength"/>
+          <xsd:element minOccurs="0" name="DEASchedule" type="datatypes:NCICode">
+            <xsd:annotation>
+              <xsd:documentation>NCPDP DEASchedule Terminology – available at
+http://www.cancer.gov/cancertopics/terminologyresources/page7
+</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="LotNumber" type="datatypes:LotNumber"/>
+        </xsd:sequence>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  LotNumber  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="LotNumber">
+    <xsd:sequence>
+      <xsd:element name="LotNumber" type="datatypes:an1..140">
+        <xsd:annotation>
+          <xsd:documentation>Number assigned by the manufacturer to a batch of medications for tracking.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="LotExpiration" type="datatypes:DateType">
+        <xsd:annotation>
+          <xsd:documentation>The expiration date associated with a specific lot number of a medication.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  MandatoryAddressType  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="MandatoryAddressType">
+    <xsd:complexContent>
+      <xsd:restriction base="datatypes:AddressType">
+        <xsd:sequence>
+          <xsd:element name="AddressLine1" type="datatypes:an1..40"/>
+          <xsd:element minOccurs="0" name="AddressLine2" type="datatypes:an1..40">
+            <xsd:annotation>
+              <xsd:documentation>Use only when a second address line is needed and AddressLine1 has been used</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="City" type="datatypes:an1..35"/>
+          <xsd:element name="StateProvince" type="datatypes:an">
+            <xsd:annotation>
+              <xsd:documentation>State must be mailable in the country (e.g. when exchanging US States, the two digit alpha code is to be used, in Canada the “two space two” Province code is to be used). (ISO-3166-2 link from http://www.iso.org/iso/country_codes or http://en.wikipedia.org/wiki/ISO_3166-2)</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="PostalCode" type="datatypes:an">
+            <xsd:annotation>
+              <xsd:documentation>PostalCode must be mailable in the country (e.g. for US, the PostalCode length is 5 or 9, when used for Canadian Postal Code – This left justified field contains the three-digit forward sortation area (FSA) followed by a space, then followed by a Local Delivery Unit.  (Format A0A 0A0, where A is a letter and 0 is a digit, with a space separating the third and fourth characters.)</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="CountryCode" type="datatypes:an1..2">
+            <xsd:annotation>
+              <xsd:documentation>Required if country is not “US” is placed in CountryCode when it is in an optional address type. See Reference for country code: ISO-3166-1 http://www.iso.org/iso/country_codes.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  MeasurementType  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="MeasurementType">
+    <xsd:annotation>
+      <xsd:documentation>Measurement Structure used for Observation</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="VitalSign" type="datatypes:an"/>
+      <xsd:element name="LOINCVersion" type="datatypes:an"/>
+      <xsd:element name="Value" type="datatypes:n1..18"/>
+      <xsd:element name="UnitOfMeasure" type="datatypes:an"/>
+      <xsd:element name="UCUMVersion" type="datatypes:an"/>
+      <xsd:element name="ObservationDate" type="datatypes:DateType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  NCICode  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="NCICode">
+    <xsd:annotation>
+      <xsd:documentation>NCPDP Constrained Code to value sets defined by NCI. See External Code List Introduction for information on NCI Thesaurus Code Lists. http://www.cancer.gov/cancertopics/terminologyresources/page7</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Code" type="ecl:Code"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  NameType  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="NameType">
+    <xsd:annotation>
+      <xsd:documentation>General Purpose structure to capture First, Middle, and Last Name</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="LastName" type="datatypes:an1..35"/>
+      <xsd:element name="FirstName" type="datatypes:an1..35"/>
+      <xsd:element minOccurs="0" name="MiddleName" type="datatypes:an1..35"/>
+      <xsd:element minOccurs="0" name="Suffix" type="datatypes:an1..10"/>
+      <xsd:element minOccurs="0" name="Prefix" type="datatypes:an1..10"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  NonHumanNameType  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="NonHumanNameType">
+    <xsd:annotation>
+      <xsd:documentation>General Purpose structure to capture First, Middle, and Last Name</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="LastName" type="datatypes:an1..35">
+        <xsd:annotation>
+          <xsd:documentation>Patient LastName is to contain the last name of owner.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="FirstName" type="datatypes:an1..35">
+        <xsd:annotation>
+          <xsd:documentation>Patient FirstName is to contain the first name of animal (e.g. Fido, Fluffy) or the species name if no name has been given (e.g. Horse, Fish).</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="MiddleName" type="datatypes:an1..35"/>
+      <xsd:element minOccurs="0" name="Suffix" type="datatypes:an1..10"/>
+      <xsd:element minOccurs="0" name="Prefix" type="datatypes:an1..10"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  NonVeterinarianID  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="NonVeterinarianID">
+    <xsd:annotation>
+      <xsd:documentation>Non -Vet ID is explicit ID structure to improve comprehension and validation of ID by using explicit tags for each ID type</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:restriction base="datatypes:SuperSetID">
+        <xsd:sequence>
+          <xsd:element maxOccurs="0" minOccurs="0" name="NCPDPID" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="StateLicenseNumber" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="MedicareNumber" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="MedicaidNumber" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="UPIN" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="FacilityID" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="PayerID" type="datatypes:an1..80"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="ProcessorIdentificationNumber" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="BINLocationNumber" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="MedicalRecordIdentificationNumberEHR" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="PatientAccountNumber" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="DEANumber" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="HIN" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="NAICCode" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="SocialSecurity" type="datatypes:an1..35"/>
+          <xsd:element name="NPI" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="CertificateToPrescribe" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="Data2000WaiverID" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="MutuallyDefined" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="REMSHealthcareProviderEnrollmentID" type="datatypes:an1..35">
+            <xsd:annotation>
+              <xsd:documentation>An ID assigned to a provider which is responsible for prescribing and administering a REMS drug.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="StateControlSubstanceNumber" type="datatypes:an1..35">
+            <xsd:annotation>
+              <xsd:documentation>State Issued number required to prescribe controlled substance prescriptions.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  NoteType  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="NoteType">
+    <xsd:annotation>
+      <xsd:documentation>Fill Status Note Structure</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="ReferenceNumber" type="datatypes:an1..35"/>
+      <xsd:element minOccurs="0" name="Note" type="datatypes:an1..70"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  NoteTypeWithReasonCode  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="NoteTypeWithReasonCode">
+    <xsd:annotation>
+      <xsd:documentation>Fill Status Note Structure</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="ReferenceNumber" type="datatypes:an1..35"/>
+      <xsd:element minOccurs="0" name="Note" type="datatypes:an1..70"/>
+      <xsd:element minOccurs="0" name="ReasonCode" type="ecl:ReasonCode7"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  NoteTypeWithReasonCode18  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="NoteTypeWithReasonCode18">
+    <xsd:annotation>
+      <xsd:documentation>Fill Status Note Structure</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="ReferenceNumber" type="datatypes:an1..35"/>
+      <xsd:element minOccurs="0" name="Note" type="datatypes:an1..70"/>
+      <xsd:element minOccurs="0" name="ReasonCode" type="ecl:ReasonCode18"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  PasswordType  <<complexType>>  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="PasswordType">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string">
+        <xsd:attribute fixed="PasswordDigest" name="Type" type="xsd:anySimpleType" use="required"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  PatientID  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="PatientID">
+    <xsd:annotation>
+      <xsd:documentation>PatientID is explicit ID structure to improve comprehension and validation of ID by using explicit tags for each ID type</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:restriction base="datatypes:SuperSetID">
+        <xsd:sequence>
+          <xsd:element maxOccurs="0" minOccurs="0" name="NCPDPID" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="StateLicenseNumber" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="MedicareNumber" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="MedicaidNumber" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="UPIN" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="FacilityID" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="PayerID" type="datatypes:an1..80"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="ProcessorIdentificationNumber" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="BINLocationNumber" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="MedicalRecordIdentificationNumberEHR" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="PatientAccountNumber" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="DEANumber" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="HIN" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="NAICCode" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="SocialSecurity" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="NPI" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="CertificateToPrescribe" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="Data2000WaiverID" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="MutuallyDefined" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="REMSPatientID" type="datatypes:an1..35">
+            <xsd:annotation>
+              <xsd:documentation>Risk Evaluation and Mitigation Strategy – patient identifier assigned by the REMS Administrator.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  PayerID  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="PayerID">
+    <xsd:annotation>
+      <xsd:documentation>PayerID is explicit ID structure to improve comprehension and validation of ID by using explicit tags for each ID type</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:restriction base="datatypes:SuperSetID">
+        <xsd:sequence>
+          <xsd:element maxOccurs="0" minOccurs="0" name="NCPDPID" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="StateLicenseNumber" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="MedicareNumber" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="MedicaidNumber" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="UPIN" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="FacilityID" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="PayerID" type="datatypes:an1..80"/>
+          <xsd:element minOccurs="0" name="ProcessorIdentificationNumber" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="BINLocationNumber" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="MedicalRecordIdentificationNumberEHR" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="PatientAccountNumber" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="DEANumber" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="HIN" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="NAICCode" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="SocialSecurity" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="NPI" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="CertificateToPrescribe" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="Data2000WaiverID" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="MutuallyDefined" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="StandardUniqueHealthPlanIdentifier" type="datatypes:an1..35">
+            <xsd:annotation>
+              <xsd:documentation>Code indicating that the information to follow is the HIPAA mandated Health Plan Identifier (HPID) or the Other Entity Identifier (OEID).</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  PharmacistID  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="PharmacistID">
+    <xsd:annotation>
+      <xsd:documentation>PharmacistID is explicit ID structure to improve comprehension and validation of ID by using explicit tags for each ID type</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:restriction base="datatypes:SuperSetID">
+        <xsd:sequence>
+          <xsd:element maxOccurs="0" minOccurs="0" name="NCPDPID" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="StateLicenseNumber" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="MedicareNumber" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="MedicaidNumber" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="UPIN" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="FacilityID" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="PayerID" type="datatypes:an1..80"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="ProcessorIdentificationNumber" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="BINLocationNumber" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="MedicalRecordIdentificationNumberEHR" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="PatientAccountNumber" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="DEANumber" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="HIN" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="NAICCode" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="SocialSecurity" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="NPI" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="CertificateToPrescribe" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="Data2000WaiverID" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="MutuallyDefined" type="datatypes:an1..35"/>
+        </xsd:sequence>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  PharmacyID  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="PharmacyID">
+    <xsd:annotation>
+      <xsd:documentation>PharmacyID is explicit ID structure to improve comprehension and validation of ID by using explicit tags for each ID type</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:restriction base="datatypes:SuperSetID">
+        <xsd:sequence>
+          <xsd:element name="NCPDPID" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="StateLicenseNumber" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="MedicareNumber" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="MedicaidNumber" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="UPIN" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="FacilityID" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="PayerID" type="datatypes:an1..80"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="ProcessorIdentificationNumber" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="BINLocationNumber" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="MedicalRecordIdentificationNumberEHR" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="PatientAccountNumber" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="DEANumber" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="HIN" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="NAICCode" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="SocialSecurity" type="datatypes:an1..35"/>
+          <xsd:element name="NPI" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="CertificateToPrescribe" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="Data2000WaiverID" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="MutuallyDefined" type="datatypes:an1..35"/>
+        </xsd:sequence>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  PhoneType  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="PhoneType">
+    <xsd:sequence>
+      <xsd:element name="Number" type="datatypes:n1..10"/>
+      <xsd:element minOccurs="0" name="Extension" type="datatypes:n1..8"/>
+      <xsd:element minOccurs="0" name="SupportsSMS" type="ecl:BooleanCode"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  ProblemNameCode  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="ProblemNameCode">
+    <xsd:annotation>
+      <xsd:documentation>Used as part of Diagnosis</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Text" type="datatypes:an"/>
+      <xsd:element minOccurs="0" name="Qualifier" type="ecl:ProblemNameQualifierCode"/>
+      <xsd:element minOccurs="0" name="Code" type="ecl:Code"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  ProductCode  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="ProductCode">
+    <xsd:complexContent>
+      <xsd:restriction base="datatypes:QualifiedCode">
+        <xsd:sequence>
+          <xsd:element name="Code" type="ecl:Code"/>
+          <xsd:element name="Qualifier" type="ecl:ProductQualifiersCode"/>
+        </xsd:sequence>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  ProductCodeExtended  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="ProductCodeExtended">
+    <xsd:complexContent>
+      <xsd:restriction base="datatypes:QualifiedCode">
+        <xsd:sequence>
+          <xsd:element name="Code" type="ecl:Code"/>
+          <xsd:element name="Qualifier" type="ecl:ProductQualifiersCodeExtended"/>
+        </xsd:sequence>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  QualifiedAddress  <<complexType>>  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="QualifiedAddress">
+    <xsd:annotation>
+      <xsd:documentation>Qualifier for the type of identifier for receiver.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base="datatypes:GeneralAddressType">
+        <xsd:attribute name="Qualifier" type="ecl:AddressTypeQualifier">
+          <xsd:annotation>
+            <xsd:documentation>Qualifier for the type of identifier for receiver.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  QualifiedCode  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="QualifiedCode">
+    <xsd:annotation>
+      <xsd:documentation>General Purpose NCPDP Vocabulary Constraint supporting Code and Qualifier </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Code" type="ecl:Code"/>
+      <xsd:element name="Qualifier" type="ecl:Code"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  QualifiedCodeWithDescription  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="QualifiedCodeWithDescription">
+    <xsd:annotation>
+      <xsd:documentation>General Purpose NCPDP Vocabulary Constraint supporting Code and Qualifier </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Code" type="ecl:Code"/>
+      <xsd:element name="Qualifier" type="ecl:Code"/>
+      <xsd:element minOccurs="0" name="Description" type="datatypes:an"/>
+      <xsd:element minOccurs="0" name="DateOfLastOfficeVisit" type="datatypes:DateType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  QualifiedCodeWithText  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="QualifiedCodeWithText">
+    <xsd:annotation>
+      <xsd:documentation>General Purpose NCPDP Vocabulary Constraint supporting Code and Qualifier with optional Text</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="Text" type="datatypes:an"/>
+      <xsd:element name="Qualifier" type="ecl:Code"/>
+      <xsd:element name="Code" type="ecl:Code"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  QuantityAbstract  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="QuantityAbstract">
+    <xsd:sequence>
+      <xsd:element name="Value" type="datatypes:n1..11"/>
+      <xsd:element name="CodeListQualifier" type="ecl:QuantityCodeListQualifierCode"/>
+      <xsd:element name="QuantityUnitOfMeasure" type="datatypes:NCICode">
+        <xsd:annotation>
+          <xsd:documentation>NCPDP Drug QuantityUnitOfMeasure Terminology - available at 
+http://www.cancer.gov/cancertopics/terminologyresources/page7
+See External Code List Introduction for information on NCI Thesaurus Code Lists.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="NumberOfPackagesDispensed" type="datatypes:n1..2">
+        <xsd:annotation>
+          <xsd:documentation>If it is not sent it is implied it is 1, otherwise send actual number that was dispensed.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="NumberOfPackagesToBeDispensed" type="datatypes:n1..2">
+        <xsd:annotation>
+          <xsd:documentation>If it is not sent it is implied it is 1, otherwise send desired number.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  QuantityForDispensed  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="QuantityForDispensed">
+    <xsd:complexContent>
+      <xsd:restriction base="datatypes:QuantityAbstract">
+        <xsd:sequence>
+          <xsd:element name="Value" type="datatypes:n1..11"/>
+          <xsd:element name="CodeListQualifier" type="ecl:QuantityCodeListQualifierCode"/>
+          <xsd:element name="QuantityUnitOfMeasure" type="datatypes:NCICode">
+            <xsd:annotation>
+              <xsd:documentation>NCPDP Drug QuantityUnitOfMeasure Terminology - available at 
+http://www.cancer.gov/cancertopics/terminologyresources/page7
+See External Code List Introduction for information on NCI Thesaurus Code Lists.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="NumberOfPackagesDispensed" type="datatypes:n1..2">
+            <xsd:annotation>
+              <xsd:documentation>If it is not sent it is implied it is 1, otherwise send actual number that was dispensed.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  QuantityForPrescribed  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="QuantityForPrescribed">
+    <xsd:complexContent>
+      <xsd:restriction base="datatypes:QuantityAbstract">
+        <xsd:sequence>
+          <xsd:element name="Value" type="datatypes:n1..11"/>
+          <xsd:element name="CodeListQualifier" type="ecl:QuantityCodeListQualifierCode"/>
+          <xsd:element name="QuantityUnitOfMeasure" type="datatypes:NCICode">
+            <xsd:annotation>
+              <xsd:documentation>NCPDP Drug QuantityUnitOfMeasure Terminology - available at 
+http://www.cancer.gov/cancertopics/terminologyresources/page7
+See External Code List Introduction for information on NCI Thesaurus Code Lists.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="NumberOfPackagesToBeDispensed" type="datatypes:n1..2">
+            <xsd:annotation>
+              <xsd:documentation>If it is not sent it is implied it is 1, otherwise send desired number.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  QuantityWithoutSecondQuantity  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="QuantityWithoutSecondQuantity">
+    <xsd:complexContent>
+      <xsd:restriction base="datatypes:QuantityAbstract">
+        <xsd:sequence>
+          <xsd:element name="Value" type="datatypes:n1..11"/>
+          <xsd:element name="CodeListQualifier" type="ecl:QuantityCodeListQualifierCode"/>
+          <xsd:element name="QuantityUnitOfMeasure" type="datatypes:NCICode">
+            <xsd:annotation>
+              <xsd:documentation>NCPDP Drug QuantityUnitOfMeasure Terminology - available at 
+http://www.cancer.gov/cancertopics/terminologyresources/page7
+See External Code List Introduction for information on NCI Thesaurus Code Lists.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="NumberOfPackagesDispensed" type="datatypes:n1..2">
+            <xsd:annotation>
+              <xsd:documentation>If it is not sent it is implied it is 1, otherwise send actual number that was dispensed.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="0" minOccurs="0" name="NumberOfPackagesToBeDispensed" type="datatypes:n1..2">
+            <xsd:annotation>
+              <xsd:documentation>If it is not sent it is implied it is 1, otherwise send desired number.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  RouteOfAdministrationCode  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="RouteOfAdministrationCode">
+    <xsd:annotation>
+      <xsd:documentation>Used exclusively for SIG</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="RouteOfAdministrationText" type="datatypes:an1..50"/>
+      <xsd:element minOccurs="0" name="RouteOfAdministrationCode" type="datatypes:an1..15"/>
+      <xsd:element name="RouteOfAdministrationCodeQualifier" type="datatypes:TerminologyType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  SNOMEDAdverseEventCode  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="SNOMEDAdverseEventCode">
+    <xsd:annotation>
+      <xsd:documentation>SNOMED Adverse Event Code Constraint for Allergies</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:restriction base="datatypes:SNOMEDCode">
+        <xsd:sequence>
+          <xsd:element name="Text" type="datatypes:an"/>
+          <xsd:element minOccurs="0" name="Code" type="ecl:SNOMEDCTAdverseEventCode"/>
+        </xsd:sequence>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  SNOMEDCode  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="SNOMEDCode">
+    <xsd:annotation>
+      <xsd:documentation>NCPDP Code Type constrained to SNOMED Code System, Only Valid SNOMED Codes</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Text" type="datatypes:an"/>
+      <xsd:element minOccurs="0" name="Code" type="ecl:Code"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  SNOMEDCodeTextMandatory  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="SNOMEDCodeTextMandatory">
+    <xsd:sequence>
+      <xsd:element name="Text" type="datatypes:an"/>
+      <xsd:element name="Code" type="ecl:Code"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  SNOMEDLateralityCode  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="SNOMEDLateralityCode">
+    <xsd:annotation>
+      <xsd:documentation>SNOMED Adverse Event Code Constraint for Allergies</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:restriction base="datatypes:SNOMEDCode">
+        <xsd:sequence>
+          <xsd:element name="Text" type="datatypes:an"/>
+          <xsd:element minOccurs="0" name="Code" type="ecl:SNOMEDCTLateralityCode"/>
+        </xsd:sequence>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  SigCode  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="SigCode">
+    <xsd:annotation>
+      <xsd:documentation>NCPDP Vocabulary Constraint supporting Code and Qualifier with Required Text.   If code not available from source, must use Code = 10003008, Text of “Unspecified” and Dose Clarifying Free Text. See section “Use of Clarifying Free Text Elements”. See imp guide for more information.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Text" type="datatypes:an"/>
+      <xsd:element name="Qualifier" type="ecl:SigCodes"/>
+      <xsd:element name="Code" type="ecl:Code"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  SourceQualifier  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="SourceQualifier">
+    <xsd:annotation>
+      <xsd:documentation>Qualifies the Source Description.  Similar in structure to a qualified code but instead of a code we have reference which is a id</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="Reference" type="datatypes:HistorySourceID">
+        <xsd:annotation>
+          <xsd:documentation>The identification for the prescriber, pharmacy, payer, et cetera, which is the medication source. If Qualifier is sent, Value must be sent and vice versa.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="SourceDescription" type="datatypes:an1..35"/>
+      <xsd:element name="SourceQualifier" type="ecl:SourceQualifierCode"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  SourceQualifierForTransfer  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="SourceQualifierForTransfer">
+    <xsd:annotation>
+      <xsd:documentation>Qualifies the Source Description.  Similar in structure to a qualified code but instead of a code we have reference which is a id</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Reference" type="datatypes:HistorySourceID">
+        <xsd:annotation>
+          <xsd:documentation>The identification for the prescriber, pharmacy, payer, et cetera, which is the medication source. If Qualifier is sent, Value must be sent and vice versa.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="SourceDescription" type="datatypes:an1..35"/>
+      <xsd:element name="SourceQualifier" type="ecl:SourceQualifierCode"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  StartEndDateType  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="StartEndDateType">
+    <xsd:sequence>
+      <xsd:element name="Start" type="datatypes:DateType"/>
+      <xsd:element minOccurs="0" name="End" type="datatypes:DateType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  Strength  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="Strength">
+    <xsd:annotation>
+      <xsd:documentation>Drug Strength for Medication</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="StrengthValue" type="datatypes:an1..70">
+        <xsd:annotation>
+          <xsd:documentation>Use http://evs.nci.nih.gov/ftp1/NCPDP/About.html</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="StrengthForm" type="datatypes:NCICode">
+        <xsd:annotation>
+          <xsd:documentation>NCPDP Drug StrengthForm Terminology - available at 
+http://www.cancer.gov/cancertopics/terminologyresources/page7
+See External Code List Introduction for information on NCI Thesaurus Code Lists.
+</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="StrengthUnitOfMeasure" type="datatypes:NCICode">
+        <xsd:annotation>
+          <xsd:documentation>NCPDP Drug StrengthUnitOfMeasure Terminology - available at 
+http://www.cancer.gov/cancertopics/terminologyresources/page7
+See External Code List Introduction for information on NCI Thesaurus Code Lists.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  SuperSetID  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType abstract="true" name="SuperSetID">
+    <xsd:annotation>
+      <xsd:documentation>Provider ID is explicit ID structure to improve comprehension and validation of ID by using explicit tags for each ID type</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="NCPDPID" type="datatypes:an1..35"/>
+      <xsd:element minOccurs="0" name="StateLicenseNumber" type="datatypes:an1..35"/>
+      <xsd:element minOccurs="0" name="MedicareNumber" type="datatypes:an1..35"/>
+      <xsd:element minOccurs="0" name="MedicaidNumber" type="datatypes:an1..35"/>
+      <xsd:element minOccurs="0" name="UPIN" type="datatypes:an1..35"/>
+      <xsd:element minOccurs="0" name="FacilityID" type="datatypes:an1..35"/>
+      <xsd:element minOccurs="0" name="PayerID" type="datatypes:an1..80"/>
+      <xsd:element minOccurs="0" name="ProcessorIdentificationNumber" type="datatypes:an1..35"/>
+      <xsd:element minOccurs="0" name="BINLocationNumber" type="datatypes:an1..35"/>
+      <xsd:element minOccurs="0" name="MedicalRecordIdentificationNumberEHR" type="datatypes:an1..35"/>
+      <xsd:element minOccurs="0" name="PatientAccountNumber" type="datatypes:an1..35"/>
+      <xsd:element minOccurs="0" name="DEANumber" type="datatypes:an1..35"/>
+      <xsd:element minOccurs="0" name="HIN" type="datatypes:an1..35"/>
+      <xsd:element minOccurs="0" name="NAICCode" type="datatypes:an1..35"/>
+      <xsd:element minOccurs="0" name="SocialSecurity" type="datatypes:an1..35"/>
+      <xsd:element minOccurs="0" name="NPI" type="datatypes:an1..35"/>
+      <xsd:element minOccurs="0" name="PriorAuthorization" type="datatypes:an1..35"/>
+      <xsd:element minOccurs="0" name="CertificateToPrescribe" type="datatypes:an1..35"/>
+      <xsd:element minOccurs="0" name="Data2000WaiverID" type="datatypes:an1..35"/>
+      <xsd:element minOccurs="0" name="MutuallyDefined" type="datatypes:an1..35"/>
+      <xsd:element minOccurs="0" name="StandardUniqueHealthPlanIdentifier" type="datatypes:an1..35">
+        <xsd:annotation>
+          <xsd:documentation>Code indicating that the information to follow is the HIPAA mandated Health Plan Identifier (HPID) or the Other Entity Identifier (OEID).</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="REMSPatientID" type="datatypes:an1..35">
+        <xsd:annotation>
+          <xsd:documentation>Risk Evaluation and Mitigation Strategy – patient identifier assigned by the REMS Administrator.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="REMSHealthcareSettingEnrollmentID" type="datatypes:an1..35">
+        <xsd:annotation>
+          <xsd:documentation>An ID assigned to an institution or a practice which is responsible for ordering or administering a REMS drug.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="REMSHealthcareProviderEnrollmentID" type="datatypes:an1..35">
+        <xsd:annotation>
+          <xsd:documentation>An ID assigned to a provider which is responsible for prescribing and administering a REMS drug.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="StateControlSubstanceNumber" type="datatypes:an1..35">
+        <xsd:annotation>
+          <xsd:documentation>State Issued number required to prescribe controlled substance prescriptions.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  SupervisorID  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="SupervisorID">
+    <xsd:annotation>
+      <xsd:documentation>SupervisorID is explicit ID structure to improve comprehension and validation of ID by using explicit tags for each ID type</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:restriction base="datatypes:SuperSetID">
+        <xsd:sequence>
+          <xsd:element maxOccurs="0" minOccurs="0" name="NCPDPID" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="StateLicenseNumber" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="MedicareNumber" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="MedicaidNumber" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="UPIN" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="FacilityID" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="PayerID" type="datatypes:an1..80"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="ProcessorIdentificationNumber" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="BINLocationNumber" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="MedicalRecordIdentificationNumberEHR" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="PatientAccountNumber" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="DEANumber" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="HIN" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="NAICCode" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="SocialSecurity" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="NPI" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="CertificateToPrescribe" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="Data2000WaiverID" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="MutuallyDefined" type="datatypes:an1..35"/>
+        </xsd:sequence>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  TimeZone  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="TimeZone">
+    <xsd:sequence>
+      <xsd:element name="TimeZoneIdentifier" type="ecl:TimeZoneIdentifierCode"/>
+      <xsd:element minOccurs="0" name="TimeZoneDifferenceQuantity">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[\+\-]?[0-9][0-9]?[0-9]?[0-9]?"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  TitrationDoseMeasurementType  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="TitrationDoseMeasurementType">
+    <xsd:annotation>
+      <xsd:documentation>Measurement Structure used for Observation</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="VitalSign" type="datatypes:an">
+        <xsd:annotation>
+          <xsd:documentation>Physical condition identifier.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="LOINCVersion" type="datatypes:an"/>
+      <xsd:element name="Value" type="datatypes:n1..18">
+        <xsd:annotation>
+          <xsd:documentation>Actual value of clinical information.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="UnitOfMeasure" type="datatypes:an">
+        <xsd:annotation>
+          <xsd:documentation>The code representing the TitrationDoseMeasurementValueUnitOfMeasureText.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="UCUMVersion" type="datatypes:an"/>
+      <xsd:element minOccurs="0" name="MinimumMeasurementValue" type="datatypes:n1..18">
+        <xsd:annotation>
+          <xsd:documentation>The value representing the bottom of the range that is acceptable for the desired clinical effect of the medication.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="MaximumMeasurementValue" type="datatypes:n1..18"/>
+      <xsd:element minOccurs="0" name="MeasurementNotes" type="datatypes:an1..255">
+        <xsd:annotation>
+          <xsd:documentation>Free text of the titration dose measurement.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  VeterinarianID  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xsd:complexType name="VeterinarianID">
+    <xsd:annotation>
+      <xsd:documentation>Vet ID is explicit ID structure to improve comprehension and validation of ID by using explicit tags for each ID type</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:restriction base="datatypes:SuperSetID">
+        <xsd:sequence>
+          <xsd:element maxOccurs="0" minOccurs="0" name="NCPDPID" type="datatypes:an1..35"/>
+          <xsd:element name="StateLicenseNumber" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="MedicareNumber" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="MedicaidNumber" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="UPIN" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="FacilityID" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="PayerID" type="datatypes:an1..80"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="ProcessorIdentificationNumber" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="BINLocationNumber" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="MedicalRecordIdentificationNumberEHR" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="PatientAccountNumber" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="DEANumber" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="HIN" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="NAICCode" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="SocialSecurity" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="NPI" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="CertificateToPrescribe" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="Data2000WaiverID" type="datatypes:an1..35"/>
+          <xsd:element maxOccurs="0" minOccurs="0" name="MutuallyDefined" type="datatypes:an1..35"/>
+          <xsd:element minOccurs="0" name="StateControlSubstanceNumber" type="datatypes:an1..35">
+            <xsd:annotation>
+              <xsd:documentation>State Issued number required to prescribe controlled substance prescriptions.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:annotation>
+    <xsd:documentation>The NCPDP datatypes.xsd defines small, static, reusable structures (structural components) whose usage and validation is not typically impacted by the context of it use. 
+
+For instance, ZipCode structure and validation is not impacted if it used as part of a pharmacy address or a patient's address</xsd:documentation>
+  </xsd:annotation>
+</xsd:schema>

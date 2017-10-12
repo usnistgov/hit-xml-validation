@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    File:               CDAR2_IG_EHR2VRDRPT_R1_D2_2017JAN_CCOD.xml
+    Title:              Coded Cause of Death Document
+    Specification:      Vital Records Death Reporting US Realm - Release 2
+
+    Revision History:
+        Created:    November 2016       Sarah Gaunt     Ballot of STU Release 2
+        Revised:
+-->
+<!--
+    Disclaimer:
+    This sample file is informative only.
+    This sample file contains representative data elements from the eICR IG.
+    The file depicts a fictional character's health data. Any resemblance to a real person is coincidental.
+    To illustrate as many data elements as possible, the clinical scenario may not be entirely plausible.
+    The data in this sample file is not intended to represent a real patients, people or clinical events.
+    This sample is designed to be used in conjunction with the eICR IG.
+
+    Where guidance has been given to the conformance or cardinality of elements or
+    attributes and there is a discrepancy with the IG, the IG is always the normative
+    source of truth.
+
+    Please note:  This sample is valid against the Schema and Schematron for ERRORS (not warnings).
+    Logical schematron WARNINGS will generate from the sample file.
+    It is logical to generate a samples file from a system with valid warnings.
+-->
+<!--
+  Templates are identified in comments above their template id.
+  The IG in which the template version was first published is identified in square brackets before the template name.
+
+  e.g.: [C-CDA 2.1] Continuity of Care (CCD) (V3)       indicates that the Discharge Summary (V3) template was first published in IG C-CDA R2.1
+        [C-CDA R2.0] Plan of Treatment Section (V2)     indicates that the Plan of Treatment Section (V2) template was first published in IG C-CDA R2.0
+        [C-CDA R1.1] History of Present Illness Section indicates that the Hospital Course Section was first published in IG C-CDA R1.1
+
+  Even though all 3 templates above are included in IG C-CDA 2.1, because there have been no new versions of
+  the History of Present Illness Section template in IGs later than C-CDA R1.1, it is considered to be published in R1.1.
+  Similarly, there have been no new versions of the Plan of Treatment Section template later than C-CDA R.2 so it
+  is considered to be published in R2.0.
+-->
+<?xml-stylesheet type="text/xsl" href="http://hit-dev.nist.gov/VR/transform/cda.xsl"?>
+<ClinicalDocument xmlns:cda="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:hl7-org:v3"
+                  xmlns:sdtc="urn:hl7-org:sdtc" xsi:schemaLocation="urn:hl7-org:v3 http://hit-dev.nist.gov/VR/CDA_SDTC.xsd">
+    <realmCode code="US" />
+    <typeId extension="POCD_HD000040" />
+
+    <!-- [VRDR STU2] U.S. Standard Certificate of Death (V2) -->
+    <templateId root="2.16.840.1.113883.10.20.26.1" extension="2016-12-01" />
+    <!-- [VRDR STU2] Coded Cause of Death Document -->
+    <templateId root="2.16.840.1.113883.10.20.26.1.1.3" extension="2016-12-01" />
+
+    <!-- Provide an OID that identifies the namespace for the identifier. -->
+    <id root="1.1" extension="1052464931" />
+
+    <code code="69409-1" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="U.S. standard certificate of death - 2003 revision" />
+    <title>Coded Cause of Death Document</title>
+
+    <effectiveTime value="20161107094421-0500" />
+    <confidentialityCode code="N" codeSystem="2.16.840.1.11.3883.5.25" codeSystemName="Confidentiality" displayName="Normal" />
+    <languageCode code="en-us" />
+    <recordTarget>
+        <patientRole>
+            <!-- Provide an OID that identifies the namespace for the identifier, in this case, SSN.
+                 If SSN cannot be included, one of the following null flavor values should be used:
+                 "NA" should be used when there is no SSN, as in non-US citizens, and newborns.
+                 "UNK" should be used when the SSN is unknown and the informant cannot provide it,
+                       as in reporting the death of an unidentified person.
+                 "OTH" should be used when a social security number was provided and
+                       later determined to be not valid
+            -->
+            <!-- US Social security Number -->
+            <id root="2.16.840.1.113883.4.1" extension="987654321" />
+            <patient classCode="PSN" determinerCode="INSTANCE">
+                <!-- Decedent's Legal Name(First, Middle, Last)
+                     Use nullFlavor="UNK" if unknown -->
+                <name use="L">
+
+                    <given>Julia</given>
+                    <given>Louisa</given>
+                </name>
+                <!-- AKA (also known as) is another name the decedent used or was known as.
+                    It should be listed if it is substantially different from the decedent’s
+                    legal name (e.g., Samuel Langhorne Clemens AKA Mark Twain, but not
+                    Jonathon Doe AKA John Doe).
+                -->
+                <name use="P">
+                    <family>Clemens</family>
+                    <given>Sandra</given>
+                    <given>Linda</given>
+                </name>
+                <!-- Patient Death Indicator -->
+                <sdtc:deceasedInd value="true" />
+                <!--
+                     Actual or presumed Date/Time of death
+                     sdtc:deceasedTime SHALL be precise to the year
+                     The @probability attribute represents the probability assigned to the value,
+                     a decimal number between 0 (very uncertain) and 1 (certain).
+                     If the date of death is the actual date of death, set @probability=1.
+                     If the date of death is a presumed date of death, set @probability=0.
+                -->
+                <sdtc:deceasedTime xsi:type="UVP_TS" value="20161105103000-0500" probability="0" />
+            </patient>
+        </patientRole>
+    </recordTarget>
+    <author typeCode="AUT">
+        <time value="20161201100000" />
+        <assignedAuthor classCode="ASSIGNED">
+            <id root="1.1" extension="126134972" />
+            <!-- Provide an OID that identifies the namespace for the identifier. -->
+            <assignedPerson classCode="PSN" determinerCode="INSTANCE">
+                <name>
+                    <family>Doe</family>
+                    <given>John</given>
+                    <given>M.</given>
+                </name>
+            </assignedPerson>
+        </assignedAuthor>
+    </author>
+    <custodian>
+        <assignedCustodian>
+            <representedCustodianOrganization>
+                <id root="1.1" extension="1288898110" />
+                <!-- Provide an OID that identifies the namespace for the identifier. -->
+                <name>Acme Organization</name>
+            </representedCustodianOrganization>
+        </assignedCustodian>
+    </custodian>
+
+    <component>
+        <structuredBody>
+
+            <!--
+                ********************************************************
+                Coded Cause of Death Section
+                ********************************************************
+            -->
+            <component>
+
+            </component>
+
+        </structuredBody>
+    </component>
+</ClinicalDocument>
