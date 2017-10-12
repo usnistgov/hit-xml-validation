@@ -14,17 +14,17 @@ import java.util.List;
 public class Validator {
 
     private static final String SKELETON_PATH = "/skeleton1-5.xsl";
-    public static XMLReport validate(String xmlFile, Schema schema, String schematron, String skeleton, String phase) {
+    public static XMLReport validate(String xmlFile, Schema schema, String schematron, String phase) {
         ArrayList<String> schematrons = new ArrayList<>();
         schematrons.add(schematron);
         ArrayList<Schema> schemas = new ArrayList<>();
         schemas.add(schema);
 
-        return validate(xmlFile, schemas, schematrons, skeleton, phase);
+        return validate(xmlFile, schemas, schematrons, phase);
     }
 
 
-    public static XMLReport validate(String xmlFile, List<Schema> schemas, List<String> schematrons, String skeleton, String phase) {
+    public static XMLReport validate(String xmlFile, List<Schema> schemas, List<String> schematrons, String phase) {
         XMLReport report = new XMLReport();
         if(schemas != null && !schemas.isEmpty()) {
             for(Schema schema : schemas) {
@@ -33,9 +33,7 @@ public class Validator {
                 report.addStructureEntries(xsdEntries);
             }
         }
-        if(null == skeleton){
-            skeleton = loadSkeleton();
-        }
+        String skeleton = loadSkeleton();
         ArrayList<XMLEntry> xsltEntries = ValidationService
             .validateAgainstXSLT(xmlFile, schematrons, skeleton, phase);
         report.addStructureEntries(xsltEntries);

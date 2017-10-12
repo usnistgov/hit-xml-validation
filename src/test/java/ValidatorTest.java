@@ -57,7 +57,7 @@ public class ValidatorTest {
                     schemas.add(schema);
                 }
             }
-            r = Validator.validate(getXMLFileFromResources(filepath), schemas, schematrons, null, phase);
+            r = Validator.validate(getXMLFileFromResources(filepath), schemas, schematrons, phase);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (SAXException e) {
