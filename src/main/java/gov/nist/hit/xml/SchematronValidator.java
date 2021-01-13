@@ -29,8 +29,7 @@ public class SchematronValidator {
         try {
             tmpSchematron = File.createTempFile("schematron", ".xsl");
             FileUtils.copyInputStreamToFile(schematronInput,tmpSchematron);
-            Collection<Result> schematronValidationResult = Validator.runValidation(xmlContent, Result.Severity.OTHER,
-                tmpSchematron.getAbsolutePath());
+            Collection<Result> schematronValidationResult = Validator.runValidation(xmlContent,                tmpSchematron.getAbsolutePath());
             for(Result currentResult : schematronValidationResult){
                 String classification = ERROR;
                 if(currentResult.getSeverity().equals(Result.Severity.WARNINGS)){
