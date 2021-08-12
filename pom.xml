@@ -4,7 +4,7 @@
     <groupId>gov.nist.hit.validation</groupId>
     <artifactId>hit-xml-validation</artifactId>
     <name>hit-xml-validation</name>
-    <version>1.0.2-SNAPSHOT</version>
+    <version>1.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
     <dependencies>
         <dependency>
@@ -41,7 +41,17 @@
             </plugin>
         </plugins>
     </build>
-    
+    <distributionManagement>
+        <repository>
+            <id>releases</id>
+            <url>https://hit-dev.nist.gov:9001/repository/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>Internal Snapshots</name>
+            <url>https://hit-dev.nist.gov:9001/repository/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>    
     <scm>
 		<connection>scm:git:https://github.com/usnistgov/hit-xml-validation.git</connection>
 		<url>scm:git:https://github.com/usnistgov/hit-xml-validation.git</url>
