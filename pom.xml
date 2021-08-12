@@ -13,7 +13,7 @@
         <dependency>
             <groupId>gov.nist.healthcare</groupId>
             <artifactId>schematronValidation</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>1.0</version>
         </dependency>
         <dependency>
             <groupId>commons-io</groupId>
@@ -44,4 +44,11 @@
             </plugin>
         </plugins>
     </build>
+    
+    <scm>
+		<connection>scm:git:https://github.com/usnistgov/hit-xml-validation.git</connection>
+		<url>scm:git:https://github.com/usnistgov/hit-xml-validation.git</url>
+		<developerConnection>scm:git:https://github.com/usnistgov/hit-xml-validation.git</developerConnection>
+    <tag>HEAD</tag>
+  </scm>
 </project>
