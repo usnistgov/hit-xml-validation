@@ -112,4 +112,24 @@ public class XMLEntry implements Entry {
     public String toString() {
         return this.toText();
     }
+	@Override
+	public String getMessageInstancePathName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public String getMessageInstancePositionPath() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public String getMessageProfilePath() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public String getMessageProfilePositionPath() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
